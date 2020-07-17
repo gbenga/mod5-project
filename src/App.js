@@ -3,6 +3,7 @@ import "./App.css";
 import MedicinesIndexPage from "./components/pages/MedicinesIndexPage";
 import PharmasIndexPage from "./components/pages/PharmasIndexPage";
 import MedicineShowPage from "./components/pages/MedicineShowPage";
+import PharmaShowPage from "./components/pages/PharmaShowPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
             exact
             path="/medicines/:medicineId"
             render={(routerProps) => <MedicineShowPage {...routerProps} />}
+          />
+          <Route
+            exact
+            path="/pharmas/:pharmaId"
+            render={(routerProps) => <PharmaShowPage {...routerProps} />}
           />
           <Route exact path="/">
             <div>Just a placeholder for a homepage</div>

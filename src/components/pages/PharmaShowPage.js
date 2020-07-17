@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Link } from "react-router-dom";
 
-export default class PharmaCard extends Component {
+export default class PharmaShowPage extends Component {
   state = {
     id: 0,
     address: "",
@@ -12,18 +11,19 @@ export default class PharmaCard extends Component {
   };
 
   componentDidMount() {
-    API.fetchPharma(this.props.pharma.id).then((pharmaObj) =>
+    API.fetchPharma(this.props.match.params.pharmaId).then((pharmaObj) =>
       this.setState(pharmaObj)
     );
   }
   render() {
     return (
       <div>
-        This is a card for {this.state.name}
-        <Link to={`/pharmas/${this.state.id}`}>Link</Link>
+        This is a Pharma Show Page
+        {this.state.name}
         <div>Address:{this.state.address}</div>
         <div>Phone:{this.state.phone}</div>
         <a href={this.state.website}>Website</a>
+        This is the end of Pharma Show Page
       </div>
     );
   }
