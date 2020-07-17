@@ -12,6 +12,7 @@ export default class PharmaCard extends Component {
   };
 
   componentDidMount() {
+    // debugger;
     API.fetchPharma(this.props.pharma.id).then((pharmaObj) =>
       this.setState(pharmaObj)
     );

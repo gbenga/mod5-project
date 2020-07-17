@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
+import RelevantPharmasContainer from "../containers/RelevantPharmasContainer";
 
 export default class MedicineShowPage extends Component {
   state = {
@@ -26,7 +27,7 @@ export default class MedicineShowPage extends Component {
           {this.state.quantity}
         </div>
         <div>{this.state.instructions}</div>
-        <div>Available at:{this.state.pharma.name}</div>
+        <RelevantPharmasContainer pharma={this.state.pharma} />
       </div>
     );
   }
