@@ -11,7 +11,9 @@ export default class MedicineCard extends Component {
     quantity: 0,
   };
   componentDidMount() {
-    API.fetchMedicine(this.props.medicine).then((med) => this.setState(med));
+    API.fetchMedicine(this.props.medicine).then((medObj) =>
+      this.setState(medObj)
+    );
   }
   render() {
     return (
