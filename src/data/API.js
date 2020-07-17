@@ -11,11 +11,11 @@ function fetchMedicines() {
       )
     );
 }
-function fetchMedicine(medicine) {
-  return fetch(`${medicinesURL}/${medicine.id}`)
+function fetchMedicine(medicineId) {
+  return fetch(`${medicinesURL}/${medicineId}`)
     .then((resp) => resp.json())
     .catch((err) =>
-      alert(`Fetching data for the medicine with ${medicine.id} didn't work`)
+      alert(`Fetching data for the medicine with ${medicineId} didn't work`)
     );
 }
 function fetchPharmas() {
@@ -27,11 +27,11 @@ function fetchPharmas() {
       )
     );
 }
-function fetchPharma(pharma) {
-  return fetch(`${pharmasURL}/${pharma.id}`)
+function fetchPharma(pharmaId) {
+  return fetch(`${pharmasURL}/${pharmaId}`)
     .then((resp) => resp.json())
     .catch((err) =>
-      alert(`Fetching data for the pharma with ${pharma.id} didn't work`)
+      alert(`Fetching data for the pharma with ${pharmaId} didn't work`)
     );
 }
 

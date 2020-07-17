@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Link } from "react-router-dom";
 
-export default class MedicineCard extends Component {
+export default class MedicineShowPage extends Component {
   state = {
     id: 0,
     instructions: "",
@@ -11,16 +10,17 @@ export default class MedicineCard extends Component {
     price: 0,
     quantity: 0,
   };
+
   componentDidMount() {
-    API.fetchMedicine(this.props.medicine.id).then((medObj) =>
+    API.fetchMedicine(this.props.match.params.medicineId).then((medObj) =>
       this.setState(medObj)
     );
   }
+
   render() {
     return (
       <div>
-        It's a medicine card for {this.state.name}
-        <Link to={`/medicines/${this.state.id}`}>Link</Link>
+        This is a MedicineShowPage for{this.state.name}
         <div>
           Price: £{this.state.price}, Quantity:
           {this.state.quantity}
