@@ -6,7 +6,7 @@ export default class MedicineCard extends Component {
     id: 0,
     instructions: "",
     name: "",
-    pharma: null,
+    pharma: {},
     price: 0,
     quantity: 0,
   };
@@ -24,6 +24,7 @@ export default class MedicineCard extends Component {
           {this.state.quantity}
         </div>
         <div>{this.state.instructions}</div>
+        <div>Available at:{this.state.pharma.name}</div>
       </div>
     );
   }
