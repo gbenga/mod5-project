@@ -32,7 +32,14 @@ export default class OrderPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToOrders({ order: this.state.form }).then(console.log);
+    API.postToOrders({ order: this.state.form })
+      .then((order) =>
+        API.postToOrderMedicines({
+          order_medicine: { order_id: order.id, medicine_id: this.state.id },
+        })
+      )
+      .then(console.log);
+    // then create OM
   };
   render() {
     return (

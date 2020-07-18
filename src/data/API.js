@@ -4,6 +4,7 @@ const pharmasURL = `${baseURL}/pharmas`;
 const stocksURL = `${baseURL}/stocks`;
 const usersURL = `${baseURL}/users`;
 const ordersURL = `${baseURL}/orders`;
+const orderMedicinesURL = `${baseURL}/order_medicines`;
 
 function fetchMedicines() {
   return fetch(medicinesURL)
@@ -69,6 +70,24 @@ function postToOrders(formData) {
       alert(`Posting this new order didn't work. Error message : ${err}`)
     );
 }
+function postToOrderMedicines(formData) {
+  const configObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(formData),
+  };
+
+  return fetch(orderMedicinesURL, configObject)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(
+        `Posting this new OrderMedicine didn't work. Error message : ${err}`
+      )
+    );
+}
 
 export default {
   fetchMedicines,
@@ -78,4 +97,5 @@ export default {
   fetchStock,
   fetchUsers,
   postToOrders,
+  postToOrderMedicines,
 };
