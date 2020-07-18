@@ -4,6 +4,7 @@ import MedicinesIndexPage from "./components/pages/MedicinesIndexPage";
 import PharmasIndexPage from "./components/pages/PharmasIndexPage";
 import MedicineShowPage from "./components/pages/MedicineShowPage";
 import PharmaShowPage from "./components/pages/PharmaShowPage";
+import OrderPage from "./components/pages/OrderPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
             exact
             path="/pharmas/:pharmaId"
             render={(routerProps) => <PharmaShowPage {...routerProps} />}
+          />
+          <Route
+            exact
+            path="/medicines/:medicineId/order"
+            render={(routerProps) => <OrderPage {...routerProps} />}
           />
           <Route exact path="/">
             <div>Just a placeholder for a homepage</div>
