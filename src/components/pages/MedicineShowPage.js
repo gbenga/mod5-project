@@ -7,9 +7,11 @@ export default class MedicineShowPage extends Component {
     id: 0,
     instructions: "",
     name: "",
-    pharma: {},
+    orders: [],
+    pharmas: [],
     price: 0,
     quantity: 0,
+    stocks: [],
   };
 
   componentDidMount() {
@@ -22,12 +24,8 @@ export default class MedicineShowPage extends Component {
     return (
       <div>
         This is a MedicineShowPage for{this.state.name}
-        <div>
-          Price: £{this.state.price}, Quantity:
-          {this.state.quantity}
-        </div>
-        <div>{this.state.instructions}</div>
-        <RelevantPharmasContainer pharma={this.state.pharma} />
+        <div>Instructions: {this.state.instructions}</div>
+        <RelevantPharmasContainer stocks={this.state.stocks} />
       </div>
     );
   }

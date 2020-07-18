@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import PharmaCard from "../cards/PharmaCard";
+import RelevantPharmaCard from "../cards/RelevantPharmaCard";
 
 export default class RelevantPharmaContainer extends Component {
-  renderPharmaCards = () => {
-    // return this.props.pharmas.map(pharma => <PharmaCard pharma={pharma} key={pharma.id}) WILL BE UPDATED WHEN RELATIONSHIPS ARE
+  renderRelevantPharmaCards = () => {
+    return this.props.stocks.map((stock) => (
+      <RelevantPharmaCard stock={stock} key={stock.id} />
+    ));
   };
   render() {
     return (
       <div>
         This is the RelevantPharmaContainer
-        {/* {this.renderPharmaCards()} */}
-        RelevantPharmaContainer
+        {this.renderRelevantPharmaCards()}
+        This is the end of the RelevantPharmaContainer
       </div>
     );
   }
