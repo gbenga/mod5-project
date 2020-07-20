@@ -8,16 +8,26 @@ import OrderPage from "./components/pages/OrderPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import SignInPage from "./components/pages/SignInPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import AuthAPI from "./AuthAPI";
 
 export default class App extends Component {
   state = {
     user: null,
   };
 
-  signIn = (user) => {
+  componentDidMount() {
+    if (localStorage.token) {
+      AuthAPI.validate(localStorage.token).then((json) =>
+        this.signIn(json.user, json.token)
+      );
+    }
+  }
+
+  signIn = (user, token) => {
     this.setState({
       user,
     });
+    localStorage.token = token;
   };
 
   render() {

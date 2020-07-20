@@ -1,5 +1,6 @@
 const baseURL = "http://localhost:3000/api/v1";
 const sign_inURL = `${baseURL}/sign-in`;
+const validateURL = `${baseURL}/validate`;
 
 function signIn(signInData) {
   const configObject = {
@@ -15,5 +16,16 @@ function signIn(signInData) {
     .then((resp) => resp.json())
     .catch((err) => alert(`signing this user in did not work. Error: ${err}`));
 }
+function validate(token) {
+  const configObject = {
+    headers: {
+      Authorization: token,
+    },
+  };
 
-export default { signIn };
+  return fetch(validateURL, configObject)
+    .then((resp) => resp.json())
+    .catch((err) => alert(`validating this user did not work. Error: ${err}`));
+}
+
+export default { signIn, validate };

@@ -14,7 +14,9 @@ export default class SignInForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-    AuthAPI.signIn(this.state).then((json) => this.props.signIn(json.user));
+    AuthAPI.signIn(this.state).then((json) =>
+      this.props.signIn(json.user, json.token)
+    );
   };
   render() {
     return (
