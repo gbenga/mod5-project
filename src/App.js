@@ -29,6 +29,12 @@ export default class App extends Component {
     });
     localStorage.token = token;
   };
+  signOut = () => {
+    this.setState({
+      user: null,
+    });
+    localStorage.removeItem("token");
+  };
 
   render() {
     return (
@@ -49,9 +55,11 @@ export default class App extends Component {
             </li>
           </ul>
           <Switch>
-            <Route exact path="/medicines">
-              <MedicinesIndexPage />
-            </Route>
+            <Route
+              exact
+              path="/medicines"
+              render={(routerProps) => <MedicinesIndexPage {...routerProps} />}
+            ></Route>
             <Route exact path="/pharmas">
               <PharmasIndexPage />
             </Route>
@@ -74,7 +82,11 @@ export default class App extends Component {
               <ProfilePage />
             </Route>
             <Route exact path="/sign-in">
-              <SignInPage signIn={this.signIn} user={this.state.user} />
+              <SignInPage
+                signIn={this.signIn}
+                user={this.state.user}
+                signOut={this.signOut}
+              />
             </Route>
             <Route exact path="/">
               <div>Just a placeholder for a homepage</div>

@@ -6,9 +6,14 @@ export default class SignInPage extends React.Component {
     return (
       <div>
         This is the SignInPage
-        {this.props.user
-          ? `Welcome, ${this.props.user.first_name}, long time no see`
-          : "Please sign in"}
+        {this.props.user ? (
+          <div>
+            Welcome, {this.props.user.first_name}, long time no see
+            <button onClick={this.props.signOut}>Sign out</button>
+          </div>
+        ) : (
+          "Please sign in"
+        )}
         <SignInForm signIn={this.props.signIn} />
       </div>
     );
