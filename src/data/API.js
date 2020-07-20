@@ -88,6 +88,24 @@ function postToOrderMedicines(formData) {
       )
     );
 }
+function fetchUser(userId) {
+  return fetch(`${usersURL}/${userId}`)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(
+        `Fetching data for this user was unsuccessful. Error message: ${err}`
+      )
+    );
+}
+function fetchOrder(orderId) {
+  return fetch(`${ordersURL}/${orderId}`)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(
+        `Fetching data for this order was unsuccessful. Error message: ${err}`
+      )
+    );
+}
 
 export default {
   fetchMedicines,
@@ -96,6 +114,8 @@ export default {
   fetchPharma,
   fetchStock,
   fetchUsers,
+  fetchUser,
+  fetchOrder,
   postToOrders,
   postToOrderMedicines,
 };

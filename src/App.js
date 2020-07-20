@@ -112,15 +112,20 @@ export default class App extends Component {
                 />
               )}
             />
-            <Route exact path="/profile">
-              <ProfilePage user={this.state.user} />
-            </Route>
+            <Route
+              exact
+              path="/profile"
+              render={(routerProps) => (
+                <ProfilePage
+                  {...routerProps}
+                  user={this.state.user}
+                  signOut={this.signOut}
+                />
+              )}
+            />
+
             <Route exact path="/sign-in">
-              <SignInPage
-                signIn={this.signIn}
-                user={this.state.user}
-                signOut={this.signOut}
-              />
+              <SignInPage signIn={this.signIn} user={this.state.user} />
             </Route>
             <Route exact path="/">
               <Homepage />
