@@ -7,12 +7,14 @@ import PharmaShowPage from "./components/pages/PharmaShowPage";
 import OrderPage from "./components/pages/OrderPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import SignInPage from "./components/pages/SignInPage";
+import Homepage from "./components/pages/Homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
 
 export default class App extends Component {
   state = {
     user: null,
+    redirect: "/",
   };
 
   componentDidMount() {
@@ -58,28 +60,60 @@ export default class App extends Component {
             <Route
               exact
               path="/medicines"
-              render={(routerProps) => <MedicinesIndexPage {...routerProps} />}
-            ></Route>
-            <Route exact path="/pharmas">
-              <PharmasIndexPage />
-            </Route>
+              render={(routerProps) => (
+                <MedicinesIndexPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/pharmas"
+              render={(routerProps) => (
+                <PharmasIndexPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                />
+              )}
+            />
             <Route
               exact
               path="/medicines/:medicineId"
-              render={(routerProps) => <MedicineShowPage {...routerProps} />}
+              render={(routerProps) => (
+                <MedicineShowPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                />
+              )}
             />
             <Route
               exact
               path="/pharmas/:pharmaId"
-              render={(routerProps) => <PharmaShowPage {...routerProps} />}
+              render={(routerProps) => (
+                <PharmaShowPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                />
+              )}
             />
             <Route
               exact
               path="/medicines/:medicineId/order"
-              render={(routerProps) => <OrderPage {...routerProps} />}
+              render={(routerProps) => (
+                <OrderPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                />
+              )}
             />
             <Route exact path="/profile">
-              <ProfilePage />
+              <ProfilePage user={this.state.user} />
             </Route>
             <Route exact path="/sign-in">
               <SignInPage
@@ -89,7 +123,7 @@ export default class App extends Component {
               />
             </Route>
             <Route exact path="/">
-              <div>Just a placeholder for a homepage</div>
+              <Homepage />
             </Route>
           </Switch>
         </Router>

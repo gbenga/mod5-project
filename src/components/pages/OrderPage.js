@@ -32,14 +32,18 @@ export default class OrderPage extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToOrders({ order: this.state.form })
-      .then((order) =>
-        API.postToOrderMedicines({
-          order_medicine: { order_id: order.id, medicine_id: this.state.id },
-        })
-      )
-      .then(console.log);
-    // then reduce stock by 1 w patch request
+    if (this.props.user) {
+      API.postToOrders({ order: this.state.form })
+        .then((order) =>
+          API.postToOrderMedicines({
+            order_medicine: { order_id: order.id, medicine_id: this.state.id },
+          })
+        )
+        .then(console.log);
+      // then reduce stock by 1 w patch request
+    } else {
+      this.props.history.push(this.props.redirect);
+    }
   };
   render() {
     return (

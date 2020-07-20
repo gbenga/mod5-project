@@ -9,9 +9,13 @@ export default class MedicinesIndexPage extends Component {
   };
 
   componentDidMount() {
-    API.fetchMedicines().then((array) =>
-      this.setState({ medicines: [...this.state.medicines, ...array] })
-    );
+    if (this.props.user) {
+      API.fetchMedicines().then((array) =>
+        this.setState({ medicines: [...this.state.medicines, ...array] })
+      );
+    } else {
+      this.props.history.push(this.props.redirect);
+    }
   }
 
   updateSearchTerm = (e) => {
