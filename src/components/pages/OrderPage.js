@@ -39,7 +39,7 @@ export default class OrderPage extends Component {
         })
       )
       .then(console.log);
-    // then create OM
+    // then reduce stock by 1 w patch request
   };
   render() {
     return (

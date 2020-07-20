@@ -21,6 +21,9 @@ export default class RelevantPharmaCard extends Component {
     return (
       <div>
         This is a card for {this.state.pharma.name}
+        <div>
+          Price: {this.state.price}, {this.state.quantity} available
+        </div>
         <Link to={`/pharmas/${this.state.pharma_id}`}>Link</Link>
         <div>Address:{this.state.pharma.address}</div>
         <div>Phone:{this.state.pharma.phone}</div>

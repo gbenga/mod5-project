@@ -7,9 +7,11 @@ export default class MedicineCard extends Component {
     id: 0,
     instructions: "",
     name: "",
-    pharma: {},
+    orders: [],
+    pharmas: [],
     price: 0,
     quantity: 0,
+    stocks: [],
   };
   componentDidMount() {
     API.fetchMedicine(this.props.medicine.id).then((medObj) =>
@@ -21,11 +23,8 @@ export default class MedicineCard extends Component {
       <div>
         It's a medicine card for {this.state.name}
         <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
-        <div>
-          Price: £{this.state.price}, Quantity:{this.state.quantity},
-          Instructions: {this.state.instructions}
-        </div>
-        <div>Available at:{this.state.pharma.name}</div>
+        <div>Instructions: {this.state.instructions}</div>
+        <div>Available at:{this.state.pharmas.length} pharmacies</div>
         <Link to={`/medicines/${this.state.id}/order`}>Order now</Link>
       </div>
     );
