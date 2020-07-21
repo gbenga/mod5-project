@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserOrdersContainer from "../containers/UsersOrdersContainer";
+import { Link } from "react-router-dom";
 
 export default class ProfilePage extends Component {
   render() {
@@ -7,6 +8,7 @@ export default class ProfilePage extends Component {
       <div>
         Hi {this.props.user.first_name}, how's it going?
         <button onClick={this.props.signOut}>Sign out</button>
+        <Link to={`/users/${this.props.user.id}/edit`}>Edit User</Link>
         User Details
         <div>
           Name: {this.props.user.last_name}, {this.props.user.first_name}

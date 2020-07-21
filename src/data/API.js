@@ -106,6 +106,22 @@ function fetchOrder(orderId) {
       )
     );
 }
+function patchToUser(newUserData, id) {
+  const configObject = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(newUserData),
+  };
+
+  return fetch(`${usersURL}/${id}`, configObject)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(`Editing this user didn't work. Error message : ${err}`)
+    );
+}
 
 export default {
   fetchMedicines,
@@ -118,4 +134,5 @@ export default {
   fetchOrder,
   postToOrders,
   postToOrderMedicines,
+  patchToUser,
 };
