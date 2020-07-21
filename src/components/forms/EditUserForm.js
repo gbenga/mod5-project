@@ -3,23 +3,13 @@ import API from "../../data/API";
 
 export default class EditUserForm extends Component {
   state = {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    address: "",
-    allergies: "",
+    first_name: this.props.user.first_name,
+    last_name: this.props.user.last_name,
+    phone: this.props.user.phone,
+    address: this.props.user.address,
+    allergies: this.props.user.allergies,
   };
-  componentDidMount() {
-    API.fetchUser(this.props.userId).then((userObj) =>
-      this.setState({
-        first_name: userObj.first_name,
-        last_name: userObj.last_name,
-        phone: userObj.phone,
-        address: userObj.address,
-        allergies: userObj.allergies,
-      })
-    );
-  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -27,7 +17,14 @@ export default class EditUserForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    API.patchToUser(this.state, this.props.userId).then(console.log);
+    API.patchToUser(this.state, this.props.user.id).then(console.log);
+    this.setState({
+      first_name: "",
+      last_name: "",
+      phone: "",
+      address: "",
+      allergies: "",
+    });
   };
   render() {
     return (
@@ -36,6 +33,7 @@ export default class EditUserForm extends Component {
         <input
           type="text"
           name="first_name"
+          value={this.state.first_name}
           onChange={this.handleChange}
         ></input>
         <br />
@@ -43,19 +41,31 @@ export default class EditUserForm extends Component {
         <input
           type="text"
           name="last_name"
+          value={this.state.last_name}
           onChange={this.handleChange}
         ></input>
         <br />
         <label>Phone number:</label>
-        <input type="text" name="phone" onChange={this.handleChange}></input>
+        <input
+          type="text"
+          name="phone"
+          value={this.state.phone}
+          onChange={this.handleChange}
+        ></input>
         <br />
         <label>Address:</label>
-        <input type="text" name="address" onChange={this.handleChange}></input>
+        <input
+          type="text"
+          name="address"
+          value={this.state.address}
+          onChange={this.handleChange}
+        ></input>
         <br />
         <label>Allergies:</label>
         <input
           type="text"
           name="allergies"
+          value={this.state.allergies}
           onChange={this.handleChange}
         ></input>
         <br />

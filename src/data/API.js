@@ -122,6 +122,23 @@ function patchToUser(newUserData, id) {
       alert(`Editing this user didn't work. Error message : ${err}`)
     );
 }
+function postToUsers(newUserData) {
+  // debugger;
+  const configObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(newUserData),
+  };
+
+  return fetch(usersURL, configObject)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(`Creating this new user didn't work. Error message : ${err}`)
+    );
+}
 
 export default {
   fetchMedicines,
@@ -135,4 +152,5 @@ export default {
   postToOrders,
   postToOrderMedicines,
   patchToUser,
+  postToUsers,
 };

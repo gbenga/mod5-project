@@ -30,6 +30,7 @@ export default class NewOrderForm extends Component {
         )
         .then(console.log);
       // then reduce stock by 1 w patch request
+      //so need to find the stock from relevant pharma card
     } else {
       this.props.history.push(this.props.redirect);
     }
@@ -42,7 +43,6 @@ export default class NewOrderForm extends Component {
           type="text"
           value={this.props.medicine.name}
           readOnly={true}
-          onChange={this.handleChange}
         ></input>
         <br />
         <label>User:</label>
@@ -65,7 +65,7 @@ export default class NewOrderForm extends Component {
           name="no_contact"
           onChange={this.handleChange}
         ></input>
-        <button>Submit order</button>
+        <button type="submit">Submit order</button>
       </form>
     );
   }
