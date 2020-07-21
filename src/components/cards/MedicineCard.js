@@ -22,10 +22,9 @@ export default class MedicineCard extends Component {
     return (
       <div>
         It's a medicine card for {this.state.name}
-        <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
         <div>Instructions: {this.state.instructions}</div>
         <div>Available at:{this.state.pharmas.length} pharmacies</div>
-        <Link to={`/medicines/${this.state.id}/order`}>Order now</Link>
+        <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
       </div>
     );
   }

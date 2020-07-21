@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default class RelevantPharmaCard extends Component {
   state = {
+    id: 0,
     medicine_id: 0,
     pharma_id: 0,
     price: 0,
@@ -24,7 +25,11 @@ export default class RelevantPharmaCard extends Component {
         <div>
           Price: {this.state.price}, {this.state.quantity} available
         </div>
-        <Link to={`/pharmas/${this.state.pharma_id}`}>Link</Link>
+        <Link to={`/medicines/${this.state.medicine.id}/order`}>Order now</Link>
+        <br />
+        <Link to={`/pharmas/${this.state.pharma_id}`}>
+          Link to this pharmacy
+        </Link>
         <div>Address:{this.state.pharma.address}</div>
         <div>Phone:{this.state.pharma.phone}</div>
         <a href={this.state.pharma.website}>Website</a>
