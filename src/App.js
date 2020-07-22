@@ -4,7 +4,7 @@ import MedicinesIndexPage from "./components/pages/MedicinesIndexPage";
 import PharmasIndexPage from "./components/pages/PharmasIndexPage";
 import MedicineShowPage from "./components/pages/MedicineShowPage";
 import PharmaShowPage from "./components/pages/PharmaShowPage";
-import OrderPage from "./components/pages/OrderPage";
+import QuickOrderPage from "./components/pages/QuickOrderPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import SignInPage from "./components/pages/SignInPage";
 import Homepage from "./components/pages/Homepage";
@@ -110,7 +110,7 @@ export default class App extends Component {
                   exact
                   path="/medicines/:medicineId/order"
                   render={(routerProps) => (
-                    <OrderPage
+                    <QuickOrderPage
                       {...routerProps}
                       user={this.state.user}
                       redirect={this.state.redirect}
