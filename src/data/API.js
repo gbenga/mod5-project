@@ -139,6 +139,15 @@ function postToUsers(newUserData) {
       alert(`Creating this new user didn't work. Error message : ${err}`)
     );
 }
+function fetchStocks() {
+  return fetch(stocksURL)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(
+        `Fetching stocks from the database was unsuccessful. Error message: ${err}`
+      )
+    );
+}
 
 export default {
   fetchMedicines,
@@ -153,4 +162,5 @@ export default {
   postToOrderMedicines,
   patchToUser,
   postToUsers,
+  fetchStocks,
 };
