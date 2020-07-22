@@ -8,7 +8,7 @@ export default class ProfilePage extends Component {
     this.props.history.push(this.props.redirect);
   };
 
-  render() {
+  renderProfilePageInfo = () => {
     return (
       <div>
         Hi {this.props.user.first_name}, how's it going?
@@ -24,6 +24,18 @@ export default class ProfilePage extends Component {
         <div>Allergies:{this.props.user.allergies}</div>
         <div>Sex:{this.props.user.sex}</div>
         <UserOrdersContainer userId={this.props.user.id} />
+      </div>
+    );
+  };
+
+  renderGeneric = () => {
+    return <div>You are not signed in.</div>;
+  };
+
+  render() {
+    return (
+      <div>
+        {this.props.user ? this.renderProfilePageInfo() : this.renderGeneric()}
       </div>
     );
   }

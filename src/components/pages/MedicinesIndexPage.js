@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MedicinesSearchResultsContainer from "../containers/MedicinesSearchResultsContainer";
 import API from "../../data/API";
+// import { Redirect } from "react-router-dom";
 
 export default class MedicinesIndexPage extends Component {
   state = {
@@ -14,6 +15,7 @@ export default class MedicinesIndexPage extends Component {
         this.setState({ medicines: [...this.state.medicines, ...array] })
       );
     } else {
+      // return <Redirect to={this.props.redirect} />;
       this.props.history.push(this.props.redirect);
     }
   }
