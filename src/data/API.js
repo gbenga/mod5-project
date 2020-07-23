@@ -149,6 +149,22 @@ function fetchStocks() {
     );
 }
 
+function patchToStock(newStockData, id) {
+  const configObject = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(newStockData),
+  };
+
+  return fetch(`${stocksURL}/${id}`, configObject)
+    .then((resp) => resp.json())
+    .catch((err) =>
+      alert(`Editing this user didn't work. Error message : ${err}`)
+    );
+}
 export default {
   fetchMedicines,
   fetchMedicine,
@@ -163,4 +179,5 @@ export default {
   patchToUser,
   postToUsers,
   fetchStocks,
+  patchToStock,
 };
