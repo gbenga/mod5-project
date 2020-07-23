@@ -29,7 +29,12 @@ export default class ProfilePage extends Component {
   };
 
   renderGeneric = () => {
-    return <div>You are not signed in.</div>;
+    return (
+      <div>
+        You are not signed in, head back to the homepage?
+        <Link to={"/"}>Back to homepage?</Link>
+      </div>
+    );
   };
 
   render() {

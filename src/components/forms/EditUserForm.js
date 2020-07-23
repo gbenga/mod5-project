@@ -17,7 +17,12 @@ export default class EditUserForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    API.patchToUser(this.state, this.props.user.id).then(console.log);
+    API.patchToUser(this.state, this.props.user.id).then((resp) =>
+      resp.errors
+        ? resp.errors.map((err) => console.log(err)) &&
+          alert("check console for errors")
+        : console.log("success")
+    );
     this.setState({
       first_name: "",
       last_name: "",

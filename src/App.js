@@ -133,18 +133,6 @@ export default class App extends Component {
                 />
                 <Route
                   exact
-                  path="/profile"
-                  render={(routerProps) => (
-                    <ProfilePage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                      signOut={this.signOut}
-                    />
-                  )}
-                />
-                <Route
-                  exact
                   path="/users/:userId/edit"
                   render={(routerProps) => (
                     <EditUserPage {...routerProps} user={this.state.user} />
@@ -152,6 +140,19 @@ export default class App extends Component {
                 />
               </>
             )}
+            {/* You only have access to these when not signed in */}
+            <Route
+              exact
+              path="/profile"
+              render={(routerProps) => (
+                <ProfilePage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
+                  signOut={this.signOut}
+                />
+              )}
+            />
             <Route exact path="/sign-in">
               <SignInPage signIn={this.signIn} user={this.state.user} />
             </Route>
@@ -163,7 +164,7 @@ export default class App extends Component {
               )}
             />
             <Route exact path="/">
-              <Homepage />
+              <Homepage user={this.state.user} />
             </Route>
           </Switch>
         </Router>
