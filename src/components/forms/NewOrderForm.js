@@ -27,10 +27,27 @@ export default class NewOrderForm extends Component {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
 
-  handleStockToBeOrderedChange = (e) => {
-    console.log(e.target.value);
-    // ideally on change of value, would add the object for that stock into stockToBeOrdered
-    // but otherwise, need to add something that will allow us to later add the whole object into stockToBeOrdered
+  handleStockToBeOrderedChange = (stockId, index) => {
+    // Use stock id from value of select to filter through the stocks, return the whole stock object
+    // Now there is access to the medicine and stock ids
+    const stockInQuestion = this.props.stocks.find((s) => s.id == stockId);
+    // On change, this will map through the stockToBeOrdered and compare the id of
+    // the stock has just been selected, the stocks in stocksToBeOrdered
+    // If there is a match, update the specific stockToBeOrdered with what has just been selected
+    // If not, just return the stock with nothing done to it
+    const updatedStocks = this.state.stocksToBeOrdered.map((s, i) =>
+      i === index
+        ? {
+            ...s,
+            medicine_id: stockInQuestion.medicine_id,
+            stockId: stockInQuestion.id,
+            quantity: stockInQuestion.quantity - 1,
+          }
+        : s
+    );
+    this.setState({
+      stocksToBeOrdered: [...updatedStocks],
+    });
   };
 
   handleAddStockToBeOrdered = (e) => {
@@ -41,6 +58,7 @@ export default class NewOrderForm extends Component {
         stocksToBeOrdered: [
           ...this.state.stocksToBeOrdered,
           {
+            stockId: 0,
             medicine_id: 0,
             quantity: 0,
           },
@@ -48,33 +66,13 @@ export default class NewOrderForm extends Component {
       },
     });
   };
-  // What I need state to look like for this handleSubmit
-  // state = {
-  //   user_id: 0,
-  //   delivery_date: "",
-  //   no_contact: "",
-  //   stocksToBeOrdered: [
-  //     {
-  //       id: 0,
-  //       medicine_id : 0,
-  //       quantity : 0
-  //     },
-  //     ..........
-  //     {
-  //       id: 0,
-  //       medicine_id : 0,
-  //       quantity : 0
-  //     },
-  //   ],
-  // };
 
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.user) {
-      // create an order, attached to the user. send to backend
-      // will need to make a new obj here to exclude stocksToBeOrdered
+      // This will create an order, attached to the user who is logged in
       API.postToOrders({ order: this.state })
-        //   map over state.stocksToBeOrdered, create OMs for each stock, with order_id from order as in API call before, and medicine_id from the stock.medicine_id in map
+        // Then map over the stocksToBeOrdered, and create OMs for each one, with an order id from the order just made, and medicine id from the stock
         .then((order) =>
           this.state.stocksToBeOrdered.map((stock) => {
             API.postToOrderMedicines({
@@ -83,18 +81,17 @@ export default class NewOrderForm extends Component {
                 medicine_id: stock.medicine_id,
               },
             })
-              // after this, reduce the stock.quantity in the map by 1
+              // Still while mapping over the stocksToBeOrdered, update the quantity of the stock
               .then((om) =>
                 API.patchToStock(
                   {
-                    quantity: stock.quantity - 1,
+                    quantity: stock.quantity,
                   },
-                  stock.id
+                  stock.stockId
                 )
               );
           })
-        )
-        .then(console.log);
+        );
     } else {
       this.props.history.push(this.props.redirect);
     }
@@ -103,7 +100,12 @@ export default class NewOrderForm extends Component {
     let stocksToBeOrdered = this.state.stocksToBeOrdered.map((stock, idx) => (
       <div key={idx}>
         <label>Medicine Name</label>
-        <select onChange={this.handleStockToBeOrderedChange}>
+        <select
+          onChange={(e) =>
+            this.handleStockToBeOrderedChange(e.target.value, idx)
+          }
+        >
+          <option value="0"> - Select a medicine - </option>
           {this.renderStockOptions()}
         </select>
       </div>
@@ -133,6 +135,7 @@ export default class NewOrderForm extends Component {
         <br />
         <h2>Medicines</h2>
         {stocksToBeOrdered}
+        {/* <StocksToBeOrdered stocksToBeOrdered={this.state.stocksToBeOrdered} /> */}
         <button onClick={this.handleAddStockToBeOrdered}>+</button>
         <button type="submit">Submit Order</button>
       </form>
