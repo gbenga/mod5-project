@@ -14,7 +14,7 @@ export default class NewOrderForm extends Component {
       user_id: this.props.user.id,
     });
   }
-
+  // abstract into component
   renderStockOptions = () => {
     return this.props.stocks.map((stock) => (
       <option key={stock.id} value={stock.id}>
@@ -22,6 +22,7 @@ export default class NewOrderForm extends Component {
       </option>
     ));
   };
+  //abstract
 
   handleChange = (e) => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -39,7 +40,7 @@ export default class NewOrderForm extends Component {
       i === index
         ? {
             ...s,
-            medicine_id: stockInQuestion.medicine_id,
+            medicineId: stockInQuestion.medicine_id,
             stockId: stockInQuestion.id,
             quantity: stockInQuestion.quantity - 1,
           }
@@ -59,7 +60,7 @@ export default class NewOrderForm extends Component {
           ...this.state.stocksToBeOrdered,
           {
             stockId: 0,
-            medicine_id: 0,
+            medicineId: 0,
             quantity: 0,
           },
         ],
@@ -78,7 +79,7 @@ export default class NewOrderForm extends Component {
             API.postToOrderMedicines({
               order_medicine: {
                 order_id: order.id,
-                medicine_id: stock.medicine_id,
+                medicine_id: stock.medicineId,
               },
             })
               // Still while mapping over the stocksToBeOrdered, update the quantity of the stock
@@ -97,6 +98,7 @@ export default class NewOrderForm extends Component {
     }
   };
   render() {
+    // abstract into component
     let stocksToBeOrdered = this.state.stocksToBeOrdered.map((stock, idx) => (
       <div key={idx}>
         <label>Medicine Name</label>
@@ -110,6 +112,7 @@ export default class NewOrderForm extends Component {
         </select>
       </div>
     ));
+    // abstract
     return (
       <form onSubmit={this.handleSubmit}>
         <label>User:</label>
