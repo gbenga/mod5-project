@@ -10,6 +10,7 @@ import SignInPage from "./components/pages/SignInPage";
 import Homepage from "./components/pages/Homepage";
 import EditUserPage from "./components/pages/EditUserPage";
 import SignUpPage from "./components/pages/SignUpPage";
+import NewOrderPage from "./components/pages/NewOrderPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
 
@@ -25,7 +26,6 @@ export default class App extends Component {
         this.signIn(json.user, json.token)
       );
     }
-    // alert("No token");
   }
 
   signIn = (user, token) => {
@@ -57,6 +57,9 @@ export default class App extends Component {
             </li>
             <li>
               <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/new-order">Place a New Order</Link>
             </li>
           </ul>
           <Switch>
@@ -111,6 +114,17 @@ export default class App extends Component {
                   path="/medicines/:medicineId/order"
                   render={(routerProps) => (
                     <QuickOrderPage
+                      {...routerProps}
+                      user={this.state.user}
+                      redirect={this.state.redirect}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/new-order"
+                  render={(routerProps) => (
+                    <NewOrderPage
                       {...routerProps}
                       user={this.state.user}
                       redirect={this.state.redirect}
