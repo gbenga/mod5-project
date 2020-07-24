@@ -19,12 +19,14 @@ export default class SignUpForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToUsers(this.state).then((resp) =>
-      resp.errors
-        ? resp.errors.map((err) => console.log(err)) &&
-          alert("check console for errors")
-        : this.props.successfulSignUp()
-    );
+    API.postToUsers(this.state)
+      .then((resp) =>
+        resp.errors
+          ? resp.errors.map((err) => console.log(err)) &&
+            alert("check console for errors")
+          : this.props.successfulSignUp()
+      )
+      .then((order) => alert(JSON.stringify(order)));
   };
   render() {
     return (

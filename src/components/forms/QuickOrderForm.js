@@ -12,28 +12,24 @@ export default class NewOrderForm extends Component {
       user_id: this.props.user.id,
     });
   }
+
   handleChange = (e) => {
     this.setState({ [e.currentTarget.name]: e.currentTarget.value });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.user) {
-      API.postToOrders({ order: this.state })
-        .then((order) =>
-          API.postToOrderMedicines({
-            order_medicine: {
-              order_id: order.id,
-              medicine_id: this.props.medicine.id,
-            },
-          })
-        )
-        .then(console.log);
-      // then reduce stock by 1 w patch request
-      //so need to find the stock from relevant pharma card
-    } else {
-      this.props.history.push(this.props.redirect);
-    }
+    API.postToOrders({ order: this.state })
+      .then((order) =>
+        API.postToOrderMedicines({
+          order_medicine: {
+            order_id: order.id,
+            medicine_id: this.props.medicine.id,
+          },
+        })
+      )
+      .then((order) => alert(JSON.stringify(order)));
+    // then reduce stock by 1 with patch request
   };
   render() {
     return (

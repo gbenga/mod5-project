@@ -23,7 +23,7 @@ export default class OrderPage extends Component {
   render() {
     return (
       <div>
-        This is the OrderPage
+        This is the QuickOrderPage
         <QuickOrderForm user={this.props.user} medicine={this.state} />
       </div>
     );

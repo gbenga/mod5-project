@@ -8,6 +8,9 @@ export default class EditUserForm extends Component {
     phone: this.props.user.phone,
     address: this.props.user.address,
     allergies: this.props.user.allergies,
+    dob: this.props.user.dob,
+    username: this.props.user.username,
+    password: this.props.user.password,
   };
 
   handleChange = (e) => {
@@ -17,19 +20,22 @@ export default class EditUserForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    API.patchToUser(this.state, this.props.user.id).then((resp) =>
-      resp.errors
-        ? resp.errors.map((err) => console.log(err)) &&
-          alert("check console for errors")
-        : console.log("success")
-    );
-    this.setState({
-      first_name: "",
-      last_name: "",
-      phone: "",
-      address: "",
-      allergies: "",
-    });
+    API.patchToUser(this.state, this.props.user.id)
+      .then((resp) =>
+        resp.errors
+          ? resp.errors.map((err) => console.log(err)) &&
+            alert("check console for errors")
+          : console.log("success")
+      )
+      .then(
+        this.setState({
+          first_name: "",
+          last_name: "",
+          phone: "",
+          address: "",
+          allergies: "",
+        })
+      );
   };
   render() {
     return (

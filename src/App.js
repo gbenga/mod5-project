@@ -140,7 +140,6 @@ export default class App extends Component {
                 <EditUserPage {...routerProps} user={this.state.user} />
               )}
             />
-
             {/* When not signed in, you can only see links to these routes */}
             <Route
               exact

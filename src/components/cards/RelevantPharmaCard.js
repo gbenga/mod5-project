@@ -25,7 +25,9 @@ export default class RelevantPharmaCard extends Component {
         <div>
           Price: {this.state.price}, {this.state.quantity} available
         </div>
-        <Link to={`/medicines/${this.state.medicine.id}/order`}>Order now</Link>
+        <Link to={`/medicines/${this.state.medicine.id}/order`}>
+          Quick Order Now
+        </Link>
         <br />
         <Link to={`/pharmas/${this.state.pharma_id}`}>
           Link to this pharmacy
