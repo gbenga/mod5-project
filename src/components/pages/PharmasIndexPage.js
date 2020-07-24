@@ -8,13 +8,9 @@ export default class PharmasIndexPage extends Component {
   };
 
   componentDidMount() {
-    if (this.props.user) {
-      API.fetchPharmas().then((pharmas) =>
-        this.setState({ pharmas: [...this.state.pharmas, ...pharmas] })
-      );
-    } else {
-      this.props.history.push(this.props.redirect);
-    }
+    API.fetchPharmas().then((pharmas) =>
+      this.setState({ pharmas: [...this.state.pharmas, ...pharmas] })
+    );
   }
   render() {
     return (

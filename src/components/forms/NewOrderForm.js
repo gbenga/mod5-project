@@ -44,32 +44,28 @@ export default class NewOrderForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.props.user) {
-      // This will create an order, attached to the user who is logged in
-      API.postToOrders({ order: this.state })
-        // Then map over the stocksToBeOrdered, and create OMs for each one, with an order id from the order just made, and medicine id from the stock
-        .then((order) =>
-          this.state.stocksToBeOrdered.map((stock) => {
-            API.postToOrderMedicines({
-              order_medicine: {
-                order_id: order.id,
-                medicine_id: stock.medicineId,
-              },
-            })
-              // Still while mapping over the stocksToBeOrdered, update the quantity of the stock
-              .then((om) =>
-                API.patchToStock(
-                  {
-                    quantity: stock.quantity,
-                  },
-                  stock.stockId
-                )
-              );
+    // This will create an order, attached to the user who is logged in
+    API.postToOrders({ order: this.state })
+      // Then map over the stocksToBeOrdered, and create OMs for each one, with an order id from the order just made, and medicine id from the stock
+      .then((order) =>
+        this.state.stocksToBeOrdered.map((stock) => {
+          API.postToOrderMedicines({
+            order_medicine: {
+              order_id: order.id,
+              medicine_id: stock.medicineId,
+            },
           })
-        );
-    } else {
-      this.props.history.push(this.props.redirect);
-    }
+            // Still while mapping over the stocksToBeOrdered, update the quantity of the stock
+            .then((om) =>
+              API.patchToStock(
+                {
+                  quantity: stock.quantity,
+                },
+                stock.stockId
+              )
+            );
+        })
+      );
   };
   render() {
     return (

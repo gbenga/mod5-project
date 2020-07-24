@@ -11,13 +11,9 @@ export default class PharmaShowPage extends Component {
   };
 
   componentDidMount() {
-    if (this.props.user) {
-      API.fetchPharma(this.props.match.params.pharmaId).then((pharmaObj) =>
-        this.setState(pharmaObj)
-      );
-    } else {
-      this.props.history.push(this.props.redirect);
-    }
+    API.fetchPharma(this.props.match.params.pharmaId).then((pharmaObj) =>
+      this.setState(pharmaObj)
+    );
   }
   render() {
     return (

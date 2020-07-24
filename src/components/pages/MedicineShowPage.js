@@ -15,13 +15,9 @@ export default class MedicineShowPage extends Component {
   };
 
   componentDidMount() {
-    if (this.props.user) {
-      API.fetchMedicine(this.props.match.params.medicineId).then((medObj) =>
-        this.setState(medObj)
-      );
-    } else {
-      this.props.history.push(this.props.redirect);
-    }
+    API.fetchMedicine(this.props.match.params.medicineId).then((medObj) =>
+      this.setState(medObj)
+    );
   }
 
   render() {
