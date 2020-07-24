@@ -23,7 +23,7 @@ export default class SignUpForm extends Component {
       resp.errors
         ? resp.errors.map((err) => console.log(err)) &&
           alert("check console for errors")
-        : console.log("success")
+        : this.props.successfulSignUp()
     );
   };
   render() {

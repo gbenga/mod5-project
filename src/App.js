@@ -50,97 +50,98 @@ export default class App extends Component {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/medicines">Medicines</Link>
-            </li>
-            <li>
-              <Link to="/pharmas">Pharmacies</Link>
-            </li>
-            <li>
               <Link to="/profile">Profile</Link>
             </li>
-            <li>
-              <Link to="/new-order">Place a New Order</Link>
-            </li>
+            {this.state.user ? (
+              <>
+                <li>
+                  <Link to="/medicines">Medicines</Link>
+                </li>
+                <li>
+                  <Link to="/pharmas">Pharmacies</Link>
+                </li>
+                <li>
+                  <Link to="/new-order">Place a New Order</Link>
+                </li>
+              </>
+            ) : null}
           </ul>
           <Switch>
-            {this.state && this.state.user && (
-              <>
-                <Route
-                  exact
-                  path="/medicines"
-                  render={(routerProps) => (
-                    <MedicinesIndexPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+            <Route
+              exact
+              path="/medicines"
+              render={(routerProps) => (
+                <MedicinesIndexPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/pharmas"
-                  render={(routerProps) => (
-                    <PharmasIndexPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              exact
+              path="/pharmas"
+              render={(routerProps) => (
+                <PharmasIndexPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/medicines/:medicineId"
-                  render={(routerProps) => (
-                    <MedicineShowPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              exact
+              path="/medicines/:medicineId"
+              render={(routerProps) => (
+                <MedicineShowPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/pharmas/:pharmaId"
-                  render={(routerProps) => (
-                    <PharmaShowPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              exact
+              path="/pharmas/:pharmaId"
+              render={(routerProps) => (
+                <PharmaShowPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/medicines/:medicineId/order"
-                  render={(routerProps) => (
-                    <QuickOrderPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              exact
+              path="/medicines/:medicineId/order"
+              render={(routerProps) => (
+                <QuickOrderPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/new-order"
-                  render={(routerProps) => (
-                    <NewOrderPage
-                      {...routerProps}
-                      user={this.state.user}
-                      redirect={this.state.redirect}
-                    />
-                  )}
+              )}
+            />
+            <Route
+              exact
+              path="/new-order"
+              render={(routerProps) => (
+                <NewOrderPage
+                  {...routerProps}
+                  user={this.state.user}
+                  redirect={this.state.redirect}
                 />
-                <Route
-                  exact
-                  path="/users/:userId/edit"
-                  render={(routerProps) => (
-                    <EditUserPage {...routerProps} user={this.state.user} />
-                  )}
-                />
-              </>
-            )}
-            {/* You only have access to these when not signed in */}
+              )}
+            />
+            <Route
+              exact
+              path="/users/:userId/edit"
+              render={(routerProps) => (
+                <EditUserPage {...routerProps} user={this.state.user} />
+              )}
+            />
+
+            {/* When not signed in, you can only see links to these routes */}
             <Route
               exact
               path="/profile"

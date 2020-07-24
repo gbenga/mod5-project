@@ -11,13 +11,12 @@ export default class ProfilePage extends Component {
   renderProfilePageInfo = () => {
     return (
       <div>
-        Hi {this.props.user.first_name}, how's it going?
+        <div>
+          {this.props.user.first_name} {this.props.user.last_name}
+        </div>
         <button onClick={this.handleClick}>Sign out</button>
         <Link to={`/users/${this.props.user.id}/edit`}>Edit User</Link>
         User Details
-        <div>
-          Name: {this.props.user.last_name}, {this.props.user.first_name}
-        </div>
         <div>Address:{this.props.user.address}</div>
         <div>Phone:{this.props.user.phone}</div>
         <div>Date of birth:{this.props.user.dob}</div>
@@ -31,8 +30,9 @@ export default class ProfilePage extends Component {
   renderGeneric = () => {
     return (
       <div>
-        You are not signed in, head back to the homepage?
-        <Link to={"/"}>Back to homepage?</Link>
+        If you've been here before, please
+        <Link to={"/sign-in"}>Sign In</Link>, or if you're new:
+        <Link to={"/sign-up"}>Sign Up</Link>
       </div>
     );
   };

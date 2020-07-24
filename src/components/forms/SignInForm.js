@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthAPI from "../../AuthAPI";
+import { Link } from "react-router-dom";
 
 export default class SignInForm extends Component {
   state = {
@@ -17,6 +18,10 @@ export default class SignInForm extends Component {
     AuthAPI.signIn(this.state).then((json) =>
       this.props.signIn(json.user, json.token)
     );
+    this.setState({
+      username: "",
+      password: "",
+    });
   };
   render() {
     return (
@@ -30,6 +35,7 @@ export default class SignInForm extends Component {
           name="password"
           onChange={this.handleChange}
         ></input>
+
         <button type="submit">Sign in</button>
       </form>
     );
