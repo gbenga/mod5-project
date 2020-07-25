@@ -3,10 +3,26 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { Grommet } from "grommet";
+
+const theme = {
+  global: {
+    colors: {
+      brand: "#228BE6",
+    },
+    font: {
+      family: "Roboto",
+      size: "14px",
+      height: "20px",
+    },
+  },
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Grommet theme={theme}>
+      <App />
+    </Grommet>
   </React.StrictMode>,
   document.getElementById("root")
 );
