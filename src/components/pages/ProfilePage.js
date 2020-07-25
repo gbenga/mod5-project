@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import UserOrdersContainer from "../containers/UsersOrdersContainer";
 import { Link } from "react-router-dom";
-import { Box, Button as GrommetButton } from "grommet";
+import { Box, Button } from "grommet";
 
 export default class ProfilePage extends Component {
   handleClick = () => {
@@ -34,17 +34,8 @@ export default class ProfilePage extends Component {
         If you've been here before, please
         <Link to={"/sign-in"}>Sign In</Link>, or if you're new:
         <Link to={"/sign-up"}>Sign Up</Link>
-        <GrommetButton color="primary" label="Login" />
-        <Box
-          tag="header"
-          direction="row"
-          align="center"
-          justify="between"
-          background="brand"
-          pad={{ left: "medium", right: "small", vertical: "small" }}
-          elevation="medium"
-          style={{ zIndex: "1" }}
-        />
+        <br />
+        <Button color="primary" label="Login" />
       </div>
     );
   };

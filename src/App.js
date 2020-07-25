@@ -13,7 +13,8 @@ import SignUpPage from "./components/pages/SignUpPage";
 import NewOrderPage from "./components/pages/NewOrderPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
-
+import { Nav, Anchor } from "grommet";
+import { Waypoint } from "grommet-icons";
 export default class App extends Component {
   state = {
     user: null,
@@ -45,6 +46,25 @@ export default class App extends Component {
     return (
       <div className="App">
         <Router>
+          <Nav direction="row" background="brand" pad="medium">
+            <Anchor label="Home" href={"/"} hoverIndicator />
+            <Waypoint color="plain" size="xlarge" />
+            <Anchor label="Profile" href={"/profile"} hoverIndicator />
+            {this.state.user ? (
+              <>
+                <Anchor label="Medicines" href={"/medicines"} hoverIndicator />
+                <Anchor label="Pharmacies" href={"/pharmas"} hoverIndicator />
+                <Anchor
+                  label="Place a new Order"
+                  href={"/new-order"}
+                  hoverIndicator
+                />
+              </>
+            ) : null}
+            {/* <Anchor icon={<Icons.Home />} hoverIndicator />
+            <Anchor icon={<Icons.Notification />} hoverIndicator />
+          <Anchor icon={<Icons.ChatOption />} hoverIndicator /> */}
+          </Nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
