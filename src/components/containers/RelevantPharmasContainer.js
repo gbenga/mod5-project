@@ -10,9 +10,8 @@ export default class RelevantPharmaContainer extends Component {
   render() {
     return (
       <div>
-        This is the RelevantPharmaContainer
+        <h3>Available at the following pharmacies:</h3>
         {this.renderRelevantPharmaCards()}
-        This is the end of the RelevantPharmaContainer
       </div>
     );
   }

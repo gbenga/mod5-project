@@ -8,7 +8,7 @@ export default class PharmaCard extends Component {
     id: 0,
     address: "",
     name: "",
-    phone: 0,
+    phone: "",
     website: "",
     medicines: [],
     orders: [],

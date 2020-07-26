@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
+import { Header, Icon } from "semantic-ui-react";
 
 export default class PharmaShowPage extends Component {
   state = {
@@ -17,14 +18,13 @@ export default class PharmaShowPage extends Component {
   }
   render() {
     return (
-      <div>
-        This is a Pharma Show Page
-        {this.state.name}
-        <div>Address:{this.state.address}</div>
-        <div>Phone:{this.state.phone}</div>
+      <Header as="h2" icon textAlign="center">
+        <Icon name="building outline" circular />
+        <Header.Content>{this.state.name}</Header.Content>
+        <Header.Content>{this.state.address}</Header.Content>
+        <Header.Content>{this.state.phone}</Header.Content>
         <a href={this.state.website}>Website</a>
-        This is the end of Pharma Show Page
-      </div>
+      </Header>
     );
   }
 }

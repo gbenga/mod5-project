@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
 import { Link } from "react-router-dom";
+import { Button, Card } from "semantic-ui-react";
 
 export default class RelevantPharmaCard extends Component {
   state = {
@@ -18,24 +19,35 @@ export default class RelevantPharmaCard extends Component {
       this.setState(stockObj)
     );
   }
+
+  // handleClickQuickOrder = () => {
+  //   this.props.history.push(`/medicines/${this.state.medicine.id}/order`);
+  // };
   render() {
     return (
-      <div>
-        This is a card for {this.state.pharma.name}
-        <div>
-          Price: {this.state.price}, {this.state.quantity} available
-        </div>
-        <Link to={`/medicines/${this.state.medicine.id}/order`}>
-          Quick Order Now
-        </Link>
-        <br />
-        <Link to={`/pharmas/${this.state.pharma_id}`}>
-          Link to this pharmacy
-        </Link>
-        <div>Address:{this.state.pharma.address}</div>
-        <div>Phone:{this.state.pharma.phone}</div>
-        <a href={this.state.pharma.website}>Website</a>
-      </div>
+      <Card centered>
+        <Card.Content>
+          <Card.Header>{this.state.pharma.name}</Card.Header>
+          <Card.Meta>{this.state.pharma.address}</Card.Meta>
+          <Card.Description>
+            <strong>£{this.state.price}</strong> ~~ {this.state.quantity} in
+            stock
+          </Card.Description>
+          <Card.Description></Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <div className="ui two buttons">
+            <Button basic color="purple">
+              <Link to={`/pharmas/${this.state.pharma_id}`}>More...</Link>
+            </Button>
+            <Button basic color="blue" onClick={this.handleClickQuickOrder}>
+              <Link to={`/medicines/${this.state.medicine.id}/order`}>
+                Quick Order Now
+              </Link>
+            </Button>
+          </div>
+        </Card.Content>
+      </Card>
     );
   }
 }
