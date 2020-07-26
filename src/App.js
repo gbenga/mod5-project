@@ -48,7 +48,7 @@ export default class App extends Component {
         <Router>
           <Nav direction="row" background="brand" pad="medium">
             <Anchor label="Home" href={"/"} hoverIndicator />
-            <Waypoint color="plain" size="xlarge" />
+            {/* <Waypoint color="plain" size="xlarge" /> */}
             <Anchor label="Profile" href={"/profile"} hoverIndicator />
             {this.state.user ? (
               <>
@@ -61,31 +61,7 @@ export default class App extends Component {
                 />
               </>
             ) : null}
-            {/* <Anchor icon={<Icons.Home />} hoverIndicator />
-            <Anchor icon={<Icons.Notification />} hoverIndicator />
-          <Anchor icon={<Icons.ChatOption />} hoverIndicator /> */}
           </Nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/profile">Profile</Link>
-            </li>
-            {this.state.user ? (
-              <>
-                <li>
-                  <Link to="/medicines">Medicines</Link>
-                </li>
-                <li>
-                  <Link to="/pharmas">Pharmacies</Link>
-                </li>
-                <li>
-                  <Link to="/new-order">Place a New Order</Link>
-                </li>
-              </>
-            ) : null}
-          </ul>
           <Switch>
             <Route
               exact

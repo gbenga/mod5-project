@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SignUpForm from "../forms/SignUpForm";
 import { Link } from "react-router-dom";
+import { Anchor } from "grommet";
 
 export default class SignUpPage extends Component {
   state = {
@@ -15,14 +16,16 @@ export default class SignUpPage extends Component {
   render() {
     return (
       <div>
-        This is the signup page
         {this.state.in ? (
-          <>
-            You've signed up successfully, now sign in
-            <Link to={"/sign-in"}>Sign in here</Link>
-          </>
+          <h2>
+            Thank you for signing up, you may now sign in:
+            <Anchor label="Sign In" href={"/sign-in"} hoverIndicator />
+          </h2>
         ) : (
-          <SignUpForm successfulSignUp={this.successfulSignUp} />
+          <>
+            <h2>Enter your details below</h2>
+            <SignUpForm successfulSignUp={this.successfulSignUp} />
+          </>
         )}
       </div>
     );

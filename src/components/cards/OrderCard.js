@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
+import { Card, Icon } from "semantic-ui-react";
 
 export default class OrderCard extends Component {
   state = {
@@ -19,12 +20,15 @@ export default class OrderCard extends Component {
   render() {
     return (
       <div>
-        This is an Order Card
-        <div>Delivery date {this.state.delivery_date}</div>
-        <div>
-          This order contains:
-          {this.state.medicines.map((medicine) => medicine.name)}
-        </div>
+        <Card>
+          <Card.Content
+            header={this.state.medicines.map((medicine) => medicine.name)}
+          />
+          <Card.Content
+            extra
+            description={`Delivery due: ${this.state.delivery_date}`}
+          />
+        </Card>
       </div>
     );
   }

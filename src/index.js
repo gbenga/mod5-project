@@ -8,10 +8,12 @@ import { Grommet } from "grommet";
 const theme = {
   global: {
     colors: {
-      brand: "#228BE6",
+      brand: "#004080",
+      "accent-1": "#8080ff",
+      focus: "#e0b3ff",
     },
     font: {
-      family: "Roboto",
+      family: "Arial",
       size: "14px",
       height: "20px",
     },

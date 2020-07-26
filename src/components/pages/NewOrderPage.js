@@ -13,7 +13,6 @@ export default class NewOrderPage extends Component {
   render() {
     return (
       <div>
-        This is the new order page
         <NewOrderForm user={this.props.user} stocks={this.state.stocks} />
       </div>
     );

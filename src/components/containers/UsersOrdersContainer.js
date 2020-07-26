@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
 import OrderCard from "../cards/OrderCard";
+import { Grid, Card } from "semantic-ui-react";
 
 export default class UsersOrdersContainer extends Component {
   state = {
@@ -22,16 +23,18 @@ export default class UsersOrdersContainer extends Component {
 
   renderOrderCards = () => {
     return this.state.orders.map((order) => (
-      <OrderCard order={order} key={order.id} />
+      <Grid.Column>
+        <OrderCard order={order} key={order.id} />
+      </Grid.Column>
     ));
   };
   render() {
     return (
       <div>
-        This is the users orders UsersOrdersContainer Here are your current
-        orders:
-        {this.renderOrderCards()}
-        This is the users orders UsersOrdersContainer
+        Here are your current orders:
+        <Grid columns="three" divided>
+          <Grid.Row>{this.renderOrderCards()}</Grid.Row>
+        </Grid>
       </div>
     );
   }
