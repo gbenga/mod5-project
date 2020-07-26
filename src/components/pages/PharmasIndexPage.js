@@ -15,9 +15,8 @@ export default class PharmasIndexPage extends Component {
   render() {
     return (
       <div>
-        This is the PharmasIndexPage
+        <h2>Pharmacies</h2>
         <PharmasIndexContainer pharmas={this.state.pharmas} />
-        This is the end of the PharmasIndexPage
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
 import { Link } from "react-router-dom";
+import { Card, Icon } from "semantic-ui-react";
 
 export default class MedicineCard extends Component {
   state = {
@@ -20,12 +21,19 @@ export default class MedicineCard extends Component {
   }
   render() {
     return (
-      <div>
-        It's a medicine card for {this.state.name}
-        <div>Instructions: {this.state.instructions}</div>
-        <div>Available at:{this.state.pharmas.length} pharmacies</div>
-        <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
-      </div>
+      <Card>
+        <Card.Content>
+          <Card.Header>{this.state.name}</Card.Header>
+          <Card.Meta>{this.state.instructions}</Card.Meta>
+          <Card.Description>
+            Available at:{this.state.pharmas.length} pharmacies
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Icon name="user" />
+          <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
+        </Card.Content>
+      </Card>
     );
   }
 }

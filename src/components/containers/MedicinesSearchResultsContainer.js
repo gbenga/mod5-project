@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import MedicineCard from "../cards/MedicineCard";
+import { Grid } from "semantic-ui-react";
 
 export default class MedicinesSearchResultsContainer extends Component {
   renderMedicineCards = () => {
     return this.props.filteredMedicines.map((med) => (
-      <MedicineCard key={med.id} medicine={med} />
+      <Grid.Column>
+        <MedicineCard key={med.id} medicine={med} />
+      </Grid.Column>
     ));
   };
   render() {
     return (
-      <div>
-        This is the MedicinesSearchResultsContainer <br />
-        {this.renderMedicineCards()}
-        This is the end of the MedicinesSearchResultsContainer
-      </div>
+      <Grid>
+        <Grid.Row columns={3}>{this.renderMedicineCards()}</Grid.Row>
+      </Grid>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Card, Icon } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 
 export default class OrderCard extends Component {
   state = {

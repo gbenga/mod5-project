@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import PharmaCard from "../cards/PharmaCard";
+import { Grid } from "semantic-ui-react";
 
 export default class PharmasIndexContainer extends Component {
   renderPharmaCards = () => {
     return this.props.pharmas.map((pharma) => (
-      <PharmaCard pharma={pharma} key={pharma.id} />
+      <Grid.Column>
+        <PharmaCard pharma={pharma} key={pharma.id} />
+      </Grid.Column>
     ));
   };
+
   render() {
     return (
-      <div>
-        This is the Pharmas Index Container
-        {this.renderPharmaCards()}
-        This is the end of Pharmas Index Container
-      </div>
+      <Grid>
+        <Grid.Row columns={3}>{this.renderPharmaCards()}</Grid.Row>
+      </Grid>
     );
   }
 }

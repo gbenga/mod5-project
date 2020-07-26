@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MedicinesSearchResultsContainer from "../containers/MedicinesSearchResultsContainer";
 import API from "../../data/API";
+import { Form } from "semantic-ui-react";
 
 export default class MedicinesIndexPage extends Component {
   state = {
@@ -27,18 +28,20 @@ export default class MedicinesIndexPage extends Component {
   render() {
     return (
       <div>
-        This is the Medicines Index Page <br />
-        <h2>Medicines Title</h2>
-        <label>Search Medicines by name:</label>
-        <input
-          type="text"
-          className="search-bar"
-          onChange={this.updateSearchTerm}
-        ></input>
+        <h2>Medicines Search</h2>
+        <Form>
+          <Form.Field>
+            <input
+              type="text"
+              className="search-bar"
+              onChange={this.updateSearchTerm}
+              placeholder="Search medicines by name"
+            ></input>
+          </Form.Field>
+        </Form>
         <MedicinesSearchResultsContainer
           filteredMedicines={this.filterMedicines()}
         />
-        This is the end of the Medicines Index Page
       </div>
     );
   }

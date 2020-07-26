@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import QuickOrderForm from "../forms/QuickOrderForm";
 import API from "../../data/API";
+import { Button, Checkbox, Form } from "semantic-ui-react";
 
 export default class OrderPage extends Component {
   state = {
@@ -23,7 +24,6 @@ export default class OrderPage extends Component {
   render() {
     return (
       <div>
-        This is the QuickOrderPage
         <QuickOrderForm user={this.props.user} medicine={this.state} />
       </div>
     );
