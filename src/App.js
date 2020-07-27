@@ -14,6 +14,7 @@ import NewOrderPage from "./components/pages/NewOrderPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
 import { Nav, Anchor } from "grommet";
+
 export default class App extends Component {
   state = {
     user: null,
@@ -24,14 +25,12 @@ export default class App extends Component {
   async componentDidMount() {
     if (localStorage.token) {
       const jso = await AuthAPI.validate(localStorage.token);
-
       this.signIn(jso.user, jso.token);
       //   AuthAPI.validate(localStorage.token).then((json) => {
       //     this.signIn(json.user, json.token);
       //     this.setState({ isLoading: false });
       //   });
     }
-
     this.setState({ isLoading: false });
   }
 
@@ -56,7 +55,6 @@ export default class App extends Component {
         <Router>
           <Nav direction="row" background="brand" pad="medium">
             <Anchor label="Home" href={"/"} hoverIndicator />
-            {/* <Waypoint color="plain" size="xlarge" /> */}
             <Anchor label="Profile" href={"/profile"} hoverIndicator />
             {this.state.user ? (
               <>

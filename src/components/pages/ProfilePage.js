@@ -32,7 +32,6 @@ export default class ProfilePage extends Component {
           <Header.Content>{this.props.user.allergies}</Header.Content>
           <Header.Content>{this.props.user.sex}</Header.Content>
         </Header>
-
         <Button.Group>
           <Button
             labelPosition="left"
@@ -62,7 +61,6 @@ export default class ProfilePage extends Component {
               <Anchor label="Sign Up" href={"/sign-up"} hoverIndicator />
             </Message>
           </Grid.Column>
-
           <Grid.Column verticalAlign="middle">
             <Message>
               <Message.Header>
@@ -72,7 +70,6 @@ export default class ProfilePage extends Component {
             </Message>
           </Grid.Column>
         </Grid>
-
         <Divider vertical>Or</Divider>
       </Segment>
     );

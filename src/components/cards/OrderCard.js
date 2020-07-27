@@ -24,7 +24,6 @@ export default class OrderCard extends Component {
           {this.state.medicines.map((m) => (
             <Card.Content header={m.name} key={m.id} />
           ))}
-
           <Card.Content
             extra
             description={`Delivery due: ${this.state.delivery_date}, Order # ${this.state.id}`}

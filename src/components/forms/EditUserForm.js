@@ -11,7 +11,6 @@ export default class EditUserForm extends Component {
     allergies: this.props.user.allergies,
     dob: this.props.user.dob,
     username: this.props.user.username,
-    // password_digest: this.props.user.password_digest,
   };
 
   handleChange = (e) => {
