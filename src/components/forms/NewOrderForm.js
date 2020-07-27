@@ -44,7 +44,6 @@ export default class NewOrderForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let order = {};
     // This will create an order, attached to the user who is logged in
     API.postToOrders({ order: this.state })
       // Then map over the stocksToBeOrdered, and create OMs for each one, with an order id from the order just made, and medicine id from the stock

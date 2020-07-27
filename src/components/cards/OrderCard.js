@@ -21,12 +21,13 @@ export default class OrderCard extends Component {
     return (
       <div>
         <Card>
-          <Card.Content
-            header={this.state.medicines.map((medicine) => medicine.name)}
-          />
+          {this.state.medicines.map((m) => (
+            <Card.Content header={m.name} key={m.id} />
+          ))}
+
           <Card.Content
             extra
-            description={`Delivery due: ${this.state.delivery_date}`}
+            description={`Delivery due: ${this.state.delivery_date}, Order # ${this.state.id}`}
           />
         </Card>
       </div>

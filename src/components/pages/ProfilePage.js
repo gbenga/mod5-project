@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import UserOrdersContainer from "../containers/UsersOrdersContainer";
 import { Anchor } from "grommet";
 import {
-  Card,
   Header,
   Button,
   Segment,

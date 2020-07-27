@@ -18,14 +18,21 @@ export default class App extends Component {
   state = {
     user: null,
     redirect: "/",
+    isLoading: true,
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     if (localStorage.token) {
-      AuthAPI.validate(localStorage.token).then((json) =>
-        this.signIn(json.user, json.token)
-      );
+      const jso = await AuthAPI.validate(localStorage.token);
+
+      this.signIn(jso.user, jso.token);
+      //   AuthAPI.validate(localStorage.token).then((json) => {
+      //     this.signIn(json.user, json.token);
+      //     this.setState({ isLoading: false });
+      //   });
     }
+
+    this.setState({ isLoading: false });
   }
 
   signIn = (user, token) => {
@@ -42,6 +49,8 @@ export default class App extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <div>Loading...</div>;
+
     return (
       <div className="App">
         <Router>
