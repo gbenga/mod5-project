@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import AuthAPI from "../../AuthAPI";
-import { Form, FormField, TextInput, Box, Button } from "grommet";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+} from "semantic-ui-react";
 
 export default class SignInForm extends Component {
   state = {
@@ -24,26 +31,45 @@ export default class SignInForm extends Component {
   };
   render() {
     return (
-      <Box align="center" pad="medium">
-        <Form onSubmit={this.handleSubmit}>
-          <FormField label="Username" htmlFor="text-input">
-            <TextInput
-              placeholder="Enter a username"
-              name="username"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Password" htmlFor="text-input">
-            <TextInput
-              type="password"
-              placeholder="Enter a password"
-              name="password"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <Button label="Sign In" type="submit" primary color="accent-1" />
-        </Form>
-      </Box>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            Log-in to your account
+          </Header>
+          <Form size="large" onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                name="username"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Username"
+              />
+              <Form.Input
+                name="password"
+                onChange={this.handleChange}
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Enter your Password"
+                type="password"
+              />
+
+              <Button type="submit" color="teal" fluid size="large">
+                Sign In
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            Are you new here? <a href="/sign-up">Sign Up</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

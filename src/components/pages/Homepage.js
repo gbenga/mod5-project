@@ -6,7 +6,7 @@ export default class Homepage extends Component {
       <div>
         Welcome, this is a home page.
         {this.props.user ? (
-          <>Hi {this.props.user.first_name}, Did you know the fact below?</>
+          <>Hi {this.props.user.first_name}</>
         ) : (
           <div>Random fact</div>
         )}

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import QuickOrderForm from "../forms/QuickOrderForm";
 import API from "../../data/API";
-import { Button, Checkbox, Form } from "semantic-ui-react";
 
 export default class OrderPage extends Component {
   state = {

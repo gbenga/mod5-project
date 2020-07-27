@@ -1,32 +1,35 @@
 import React, { Component } from "react";
 import SignUpForm from "../forms/SignUpForm";
-import { Link } from "react-router-dom";
-import { Anchor } from "grommet";
+import { Dimmer, Header, Icon } from "semantic-ui-react";
 
 export default class SignUpPage extends Component {
   state = {
-    in: null,
+    active: false,
   };
 
+  handleOpen = () => this.setState({ active: true });
+  handleClose = () => this.setState({ active: false });
   successfulSignUp = () => {
-    this.setState({ in: true });
     console.log("success");
   };
 
   render() {
+    const { active } = this.state;
     return (
       <div>
-        {this.state.in ? (
-          <h2>
-            Thank you for signing up, you may now sign in:
-            <Anchor label="Sign In" href={"/sign-in"} hoverIndicator />
-          </h2>
-        ) : (
-          <>
-            <h2>Enter your details below</h2>
-            <SignUpForm successfulSignUp={this.successfulSignUp} />
-          </>
-        )}
+        <Dimmer active={active} onClickOutside={this.handleClose} page>
+          <Header as="h2" icon inverted>
+            <Icon name="heart" />
+            Thanks! You may now sign in using the link below
+            <Header.Subheader>
+              <a href="/sign-in">Sign In</a>
+            </Header.Subheader>
+          </Header>
+        </Dimmer>
+        <SignUpForm
+          successfulSignUp={this.successfulSignUp}
+          handleOpen={this.handleOpen}
+        />
       </div>
     );
   }

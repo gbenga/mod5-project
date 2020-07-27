@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserOrdersContainer from "../containers/UsersOrdersContainer";
-import { Anchor, Button as GrommetButton, Box } from "grommet";
+import { Anchor, Box } from "grommet";
 import { Card, Header, Button } from "semantic-ui-react";
 
 export default class ProfilePage extends Component {
@@ -15,7 +15,7 @@ export default class ProfilePage extends Component {
   renderProfilePageInfo = () => {
     return (
       <div>
-        <Card color="violet">
+        <Card color="violet" centered>
           <Header as="h3">
             {this.props.user.first_name} {this.props.user.last_name}
           </Header>

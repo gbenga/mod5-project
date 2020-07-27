@@ -11,10 +11,9 @@ import Homepage from "./components/pages/Homepage";
 import EditUserPage from "./components/pages/EditUserPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import NewOrderPage from "./components/pages/NewOrderPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
 import { Nav, Anchor } from "grommet";
-import { Waypoint } from "grommet-icons";
 export default class App extends Component {
   state = {
     user: null,

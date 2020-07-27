@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Form, FormField, TextInput, Box, Button } from "grommet";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+  Label,
+} from "semantic-ui-react";
 
 export default class SignUpForm extends Component {
   state = {
@@ -27,93 +35,111 @@ export default class SignUpForm extends Component {
             alert("check console for errors")
           : this.props.successfulSignUp()
       )
-      .then((order) => alert(JSON.stringify(order)));
+      .then((order) => alert(JSON.stringify(order)))
+      .then(this.props.handleOpen());
   };
   render() {
     return (
-      <Box align="center" pad="large">
-        <Form onSubmit={this.handleSubmit}>
-          <FormField label="First Name" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your first name"
-              type="text"
-              name="first_name"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Last Name" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your last name"
-              type="text"
-              name="last_name"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Phone number" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your phone number"
-              type="text"
-              name="phone"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Address" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your address"
-              type="text-area"
-              name="address"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Allergies" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter any allergies you have"
-              type="text-area"
-              name="allergies"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <label>The following fields will be permanent</label>
-          <FormField label="Date of Birth" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your Date of Birth"
-              type="text"
-              name="dob"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Sex" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your sex"
-              type="text"
-              name="sex"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Username" htmlFor="text-input">
-            <TextInput
-              placeholder="Please enter your username"
-              type="text"
-              name="username"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <FormField label="Password" htmlFor="text-input">
-            <TextInput
-              type="password"
-              placeholder="Enter a password"
-              name="password"
-              onChange={this.handleChange}
-            />
-          </FormField>
-          <Button
-            label="Submit Details"
-            type="submit"
-            primary
-            color="accent-1"
-          />
-        </Form>
-      </Box>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            Create a new account
+          </Header>
+          <Form size="medium" onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Input
+                name="first_name"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your First Name"
+              />
+              <Form.Input
+                name="last_name"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Last Name"
+              />
+              <Form.Input
+                name="address"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Address"
+              />
+              <Form.Input
+                name="phone"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Phone number"
+              />
+              <Form.Input
+                name="allergies"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Allergies"
+              />
+              <Form.Input>
+                <Label as="a" color="orange" ribbon>
+                  The following fields will be permanent
+                </Label>
+              </Form.Input>
+              <Form.Input
+                name="dob"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Date of Birth"
+              />
+              <Form.Input
+                name="sex"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Sex"
+              />
+              <Form.Input
+                name="username"
+                onChange={this.handleChange}
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="Enter your Username"
+              />
+              <Form.Input
+                name="password"
+                onChange={this.handleChange}
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Enter your Password"
+                type="password"
+              />
+
+              <Button type="submit" color="teal" fluid size="large">
+                Submit details
+              </Button>
+            </Segment>
+          </Form>
+          <Message>
+            Are you new here? <a href="/sign-up">Sign Up</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
