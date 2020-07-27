@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Grid, Icon } from "semantic-ui-react";
 
 export default class NewOrderForm extends Component {
   state = {
@@ -34,36 +34,49 @@ export default class NewOrderForm extends Component {
   };
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Field>
-          <label>Medicine:</label>
-          <input
-            type="text"
-            value={this.props.medicine.name}
-            readOnly={true}
-          ></input>
-        </Form.Field>
-        <Form.Field>
-          <label>User:</label>
-          <input
-            type="text"
-            value={this.props.user.first_name}
-            readOnly={true}
-          ></input>
-        </Form.Field>
-        <Form.Field>
-          <label>No contact?</label>
-          <input type="checkbox" name="no_contact" readOnly={true}></input>
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="delivery_date"
-            type="date"
-            onChange={this.handleChange}
-          ></input>
-        </Form.Field>
-        <Button type="submit">Submit</Button>
-      </Form>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Field>
+              <label>Medicine:</label>
+              <input
+                type="text"
+                value={this.props.medicine.name}
+                readOnly={true}
+              ></input>
+            </Form.Field>
+            <Form.Field>
+              <label>User:</label>
+              <input
+                type="text"
+                value={this.props.user.first_name}
+                readOnly={true}
+              ></input>
+            </Form.Field>
+            <Form.Field>
+              <label>No contact?</label>
+              <input type="checkbox" name="no_contact" readOnly={true}></input>
+            </Form.Field>
+            <Form.Field>
+              <input
+                name="delivery_date"
+                type="date"
+                onChange={this.handleChange}
+              ></input>
+            </Form.Field>
+            <Button type="submit" animated>
+              <Button.Content visible>Submit</Button.Content>
+              <Button.Content hidden>
+                <Icon name="check square outline" />
+              </Button.Content>
+            </Button>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

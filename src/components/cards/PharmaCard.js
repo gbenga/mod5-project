@@ -25,14 +25,18 @@ export default class PharmaCard extends Component {
         <Card.Content>
           <Card.Header>{this.state.name}</Card.Header>
           <Card.Meta>Address:{this.state.address}</Card.Meta>
-          <Card.Description>Phone:{this.state.phone}</Card.Description>
+          <Card.Meta>Current Stock: {this.state.medicines.length}</Card.Meta>
           <Card.Description>
-            <a href={this.state.website}>Website</a>
+            <Icon name="phone" />
+            {this.state.phone}
+          </Card.Description>
+          <Card.Description>
+            <a href={this.state.website}>Visit Website</a>
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Icon name="user" />
-          <Link to={`/pharmas/${this.state.id}`}>Link</Link>
+          <Icon name="zoom-in" />
+          <Link to={`/pharmas/${this.state.id}`}>Find out more</Link>
         </Card.Content>
       </Card>
     );

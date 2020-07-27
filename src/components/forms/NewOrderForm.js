@@ -12,7 +12,7 @@ export default class NewOrderForm extends Component {
 
   componentDidMount() {
     this.setState({
-      user_id: this.props.user.id,
+      // user_id: this.props.user.id,
     });
   }
 
@@ -73,11 +73,11 @@ export default class NewOrderForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>User:</label>
-        <input
+        {/* <input
           type="text"
           value={this.props.user.first_name}
           readOnly={true}
-        ></input>
+        ></input> */}
         <br />
         <label>Delivery date:</label>
         <input

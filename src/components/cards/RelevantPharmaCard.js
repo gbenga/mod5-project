@@ -20,9 +20,6 @@ export default class RelevantPharmaCard extends Component {
     );
   }
 
-  // handleClickQuickOrder = () => {
-  //   this.props.history.push(`/medicines/${this.state.medicine.id}/order`);
-  // };
   render() {
     return (
       <Card centered>
@@ -30,7 +27,7 @@ export default class RelevantPharmaCard extends Component {
           <Card.Header>{this.state.pharma.name}</Card.Header>
           <Card.Meta>{this.state.pharma.address}</Card.Meta>
           <Card.Description>
-            <strong>£{this.state.price}</strong> ~~ {this.state.quantity} in
+            <strong>£{this.state.price}0</strong> ~~ {this.state.quantity} in
             stock
           </Card.Description>
           <Card.Description></Card.Description>
@@ -38,7 +35,9 @@ export default class RelevantPharmaCard extends Component {
         <Card.Content extra>
           <div className="ui two buttons">
             <Button basic color="purple">
-              <Link to={`/pharmas/${this.state.pharma_id}`}>More...</Link>
+              <Link to={`/pharmas/${this.state.pharma_id}`}>
+                More info about this Pharmacy
+              </Link>
             </Button>
             <Button basic color="blue" onClick={this.handleClickQuickOrder}>
               <Link to={`/medicines/${this.state.medicine.id}/order`}>

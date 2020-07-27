@@ -13,7 +13,7 @@ export default class MedicinesSearchResultsContainer extends Component {
   render() {
     return (
       <Grid>
-        <Grid.Row columns={3}>{this.renderMedicineCards()}</Grid.Row>
+        <Grid.Row columns={4}>{this.renderMedicineCards()}</Grid.Row>
       </Grid>
     );
   }

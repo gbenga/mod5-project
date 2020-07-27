@@ -71,7 +71,7 @@ export default class SignUpForm extends Component {
                 name="address"
                 onChange={this.handleChange}
                 fluid
-                icon="user"
+                icon="map signs"
                 iconPosition="left"
                 placeholder="Enter your Address"
               />
@@ -79,7 +79,7 @@ export default class SignUpForm extends Component {
                 name="phone"
                 onChange={this.handleChange}
                 fluid
-                icon="user"
+                icon="phone volume"
                 iconPosition="left"
                 placeholder="Enter your Phone number"
               />
@@ -87,7 +87,7 @@ export default class SignUpForm extends Component {
                 name="allergies"
                 onChange={this.handleChange}
                 fluid
-                icon="user"
+                icon="ban"
                 iconPosition="left"
                 placeholder="Enter your Allergies"
               />
@@ -100,7 +100,7 @@ export default class SignUpForm extends Component {
                 name="dob"
                 onChange={this.handleChange}
                 fluid
-                icon="user"
+                icon="calendar alternate"
                 iconPosition="left"
                 placeholder="Enter your Date of Birth"
               />
@@ -116,7 +116,7 @@ export default class SignUpForm extends Component {
                 name="username"
                 onChange={this.handleChange}
                 fluid
-                icon="user"
+                icon="spy"
                 iconPosition="left"
                 placeholder="Enter your Username"
               />
@@ -136,7 +136,7 @@ export default class SignUpForm extends Component {
             </Segment>
           </Form>
           <Message>
-            Are you new here? <a href="/sign-up">Sign Up</a>
+            Been here before? <a href="/sign-in">Sign In</a>
           </Message>
         </Grid.Column>
       </Grid>

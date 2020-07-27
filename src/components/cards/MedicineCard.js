@@ -24,14 +24,13 @@ export default class MedicineCard extends Component {
       <Card>
         <Card.Content>
           <Card.Header>{this.state.name}</Card.Header>
-          <Card.Meta>{this.state.instructions}</Card.Meta>
           <Card.Description>
-            Available at:{this.state.pharmas.length} pharmacies
+            Available at: {this.state.pharmas.map((pharma) => pharma.name)}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Icon name="user" />
-          <Link to={`/medicines/${this.state.id}`}>Link to show page</Link>
+          <Icon name="zoom-in" />
+          <Link to={`/medicines/${this.state.id}`}>More info</Link>
         </Card.Content>
       </Card>
     );

@@ -35,7 +35,7 @@ export default class MedicinesIndexPage extends Component {
               type="text"
               className="search-bar"
               onChange={this.updateSearchTerm}
-              placeholder="Search medicines by name"
+              placeholder="Search medicines by name..."
             ></input>
           </Form.Field>
         </Form>
