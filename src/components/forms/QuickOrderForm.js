@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Button, Form, Grid, Icon } from "semantic-ui-react";
+import { Button, Form, Grid, Icon, Label } from "semantic-ui-react";
 
 export default class NewOrderForm extends Component {
   state = {
@@ -61,9 +61,13 @@ export default class NewOrderForm extends Component {
             </Form.Field>
             <Form.Field>
               <label>No contact?</label>
-              <input type="checkbox" name="no_contact" readOnly={true}></input>
+              <input type="checkbox" name="no_contact"></input>
+              <Label pointing="left">
+                Please select if you would prefer a no contact delivery
+              </Label>
             </Form.Field>
             <Form.Field>
+              <label>Delivery Date</label>
               <input
                 name="delivery_date"
                 type="date"

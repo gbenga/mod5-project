@@ -25,7 +25,10 @@ export default class PharmaCard extends Component {
         <Card.Content>
           <Card.Header>{this.state.name}</Card.Header>
           <Card.Meta>Address:{this.state.address}</Card.Meta>
-          <Card.Meta>Current Stock: {this.state.medicines.length}</Card.Meta>
+          <Card.Meta>
+            Current stocking <strong>{this.state.medicines.length}</strong>{" "}
+            different items
+          </Card.Meta>
           <Card.Description>
             <Icon name="phone" />
             {this.state.phone}
