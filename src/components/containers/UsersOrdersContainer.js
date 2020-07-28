@@ -23,7 +23,7 @@ export default class UsersOrdersContainer extends Component {
 
   renderOrderCards = () => {
     return this.state.orders.map((order) => (
-      <Grid.Column>
+      <Grid.Column key={order.id}>
         <OrderCard order={order} key={order.id} />
       </Grid.Column>
     ));

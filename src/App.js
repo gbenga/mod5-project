@@ -11,6 +11,7 @@ import Homepage from "./components/pages/Homepage";
 import EditUserPage from "./components/pages/EditUserPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import NewOrderPage from "./components/pages/NewOrderPage";
+import LoadingPage from "./components/pages/LoadingPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
 import { Nav, Anchor } from "grommet";
@@ -26,10 +27,6 @@ export default class App extends Component {
     if (localStorage.token) {
       const jso = await AuthAPI.validate(localStorage.token);
       this.signIn(jso.user, jso.token);
-      //   AuthAPI.validate(localStorage.token).then((json) => {
-      //     this.signIn(json.user, json.token);
-      //     this.setState({ isLoading: false });
-      //   });
     }
     this.setState({ isLoading: false });
   }
@@ -48,7 +45,7 @@ export default class App extends Component {
   };
 
   render() {
-    if (this.state.isLoading) return <div>Loading...</div>;
+    if (this.state.isLoading) return <LoadingPage />;
 
     return (
       <div className="App">

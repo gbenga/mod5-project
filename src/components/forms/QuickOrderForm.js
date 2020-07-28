@@ -38,9 +38,7 @@ export default class NewOrderForm extends Component {
         })
       )
       .then((order) => this.props.setOrderDetails(order))
-      // .then((order) => alert(JSON.stringify(order)))
       .then(this.props.handleOpen());
-    // then reduce stock by 1 with patch request
   };
   render() {
     return (
@@ -61,7 +59,6 @@ export default class NewOrderForm extends Component {
                   type="text"
                   value={this.props.medicine.name}
                   readOnly={true}
-                  readOnly
                 ></Form.Input>
               </Form.Field>
               <Form.Field>

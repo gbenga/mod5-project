@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import StocksForForm from "./StocksForForm";
 import API from "../../data/API";
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-  Label,
-} from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment, Label } from "semantic-ui-react";
 
 export default class NewOrderForm extends Component {
   state = {
@@ -73,10 +65,8 @@ export default class NewOrderForm extends Component {
                 stock.stockId
               )
             );
-          debugger;
-          // && this.props.setOrderDetails(order)
         })
-      );
+      ) && this.props.handleOpen();
   };
   render() {
     return (
@@ -97,7 +87,6 @@ export default class NewOrderForm extends Component {
                 value={this.props.user.first_name}
                 readOnly={true}
                 fluid
-                readOnly
               />
               <label>Delivery date:</label>
               <Form.Input
@@ -122,7 +111,7 @@ export default class NewOrderForm extends Component {
                 stocks={this.props.stocks}
                 updateStateNewOrderForm={this.updateStateNewOrderForm}
               />
-              <Button onClick={this.handleAddStockToBeOrdered}>+</Button>
+              <Button onClick={this.handleAddStockToBeOrdered}>Add +</Button>
               <Button type="submit" color="teal">
                 Submit Order
               </Button>

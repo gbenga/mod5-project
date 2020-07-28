@@ -80,6 +80,7 @@ export default class ProfilePage extends Component {
   };
 
   render() {
+    debugger;
     return (
       <div>
         {this.props.user ? this.renderProfilePageInfo() : this.renderGeneric()}

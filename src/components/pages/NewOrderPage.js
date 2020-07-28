@@ -6,13 +6,11 @@ import { Dimmer, Header, Icon, Container } from "semantic-ui-react";
 export default class NewOrderPage extends Component {
   state = {
     stocks: [],
+    active: false,
     newOrder: {
-      order: {
-        delivery_date: "",
-      },
-      medicine: {
-        name: "",
-      },
+      delivery_date: "",
+      no_contact: "",
+      stocksToBeOrdered: [],
     },
   };
 
@@ -20,19 +18,19 @@ export default class NewOrderPage extends Component {
     API.fetchStocks().then((stocks) => this.setState({ stocks: stocks }));
   }
 
-  handleOpen = () => this.setState({ active: true });
+  handleOpen = () => {
+    this.setState({ active: true });
+  };
   handleClose = () => this.setState({ active: false });
   setOrderDetails = (order) => {
     this.setState({ newOrder: order });
   };
 
   readOrderDetails = () => {
-    // debugger;
     return (
       <Header.Subheader>
-        Order #{this.state.newOrder.id}, will arrive on{" "}
-        {this.state.newOrder.order.delivery_date}, containing{" "}
-        {this.state.newOrder.medicine.name}
+        Your order is on the way. You can view it on your profile{" "}
+        <a href={"/profile"}>Here</a>
       </Header.Subheader>
     );
   };
