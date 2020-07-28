@@ -58,7 +58,7 @@ export default class ProfilePage extends Component {
   renderGeneric = () => {
     return (
       <Segment placeholder>
-        <Grid columns={2} relaxed="very" stackable>
+        <Grid columns={2} relaxed="very">
           <Grid.Column>
             <Message>
               <Message.Header>If you're new here, please</Message.Header>

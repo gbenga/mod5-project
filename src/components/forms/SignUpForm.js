@@ -18,6 +18,7 @@ export default class SignUpForm extends Component {
     address: "",
     allergies: "",
     dob: "",
+    sex: "",
     username: "",
     password: "",
   };
@@ -31,12 +32,24 @@ export default class SignUpForm extends Component {
     API.postToUsers(this.state)
       .then((resp) =>
         resp.errors
-          ? resp.errors.map((err) => console.log(err)) &&
-            alert("check console for errors")
-          : this.props.successfulSignUp()
+          ? // Needs error handling
+            resp.errors.map((err) => alert(JSON.stringify(err)))
+          : this.props.handleOpen()
       )
       .then((order) => alert(JSON.stringify(order)))
-      .then(this.props.handleOpen());
+      .then(
+        this.setState({
+          first_name: "",
+          last_name: "",
+          phone: "",
+          address: "",
+          allergies: "",
+          dob: "",
+          sex: "",
+          username: "",
+          password: "",
+        })
+      );
   };
   render() {
     return (
@@ -54,6 +67,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="first_name"
                 onChange={this.handleChange}
+                value={this.state.first_name}
                 fluid
                 icon="user"
                 iconPosition="left"
@@ -62,6 +76,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="last_name"
                 onChange={this.handleChange}
+                value={this.state.last_name}
                 fluid
                 icon="user"
                 iconPosition="left"
@@ -70,6 +85,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="address"
                 onChange={this.handleChange}
+                value={this.state.address}
                 fluid
                 icon="map signs"
                 iconPosition="left"
@@ -78,6 +94,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="phone"
                 onChange={this.handleChange}
+                value={this.state.phone}
                 fluid
                 icon="phone volume"
                 iconPosition="left"
@@ -86,6 +103,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="allergies"
                 onChange={this.handleChange}
+                value={this.state.allergies}
                 fluid
                 icon="thumbs down"
                 iconPosition="left"
@@ -96,10 +114,12 @@ export default class SignUpForm extends Component {
                   The following fields will be permanent
                 </Label>
               </Form.Input>
+              <Label as="a">Date of Birth</Label>
               <Form.Input
                 name="dob"
                 type="date"
                 onChange={this.handleChange}
+                value={this.state.dob}
                 fluid
                 icon="calendar alternate"
                 iconPosition="left"
@@ -108,6 +128,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="sex"
                 onChange={this.handleChange}
+                value={this.state.sex}
                 fluid
                 icon="user"
                 iconPosition="left"
@@ -116,6 +137,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="username"
                 onChange={this.handleChange}
+                value={this.state.username}
                 fluid
                 icon="spy"
                 iconPosition="left"
@@ -124,6 +146,7 @@ export default class SignUpForm extends Component {
               <Form.Input
                 name="password"
                 onChange={this.handleChange}
+                value={this.state.password}
                 fluid
                 icon="lock"
                 iconPosition="left"

@@ -21,13 +21,14 @@ export default class SignInForm extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    AuthAPI.signIn(this.state).then((json) =>
-      this.props.signIn(json.user, json.token)
-    );
-    this.setState({
-      username: "",
-      password: "",
-    });
+    AuthAPI.signIn(this.state)
+      .then((json) => this.props.signIn(json.user, json.token))
+      .then(
+        this.setState({
+          username: "",
+          password: "",
+        })
+      );
   };
   render() {
     return (
@@ -45,6 +46,7 @@ export default class SignInForm extends Component {
               <Form.Input
                 name="username"
                 onChange={this.handleChange}
+                value={this.state.username}
                 fluid
                 icon="user"
                 iconPosition="left"
@@ -53,6 +55,7 @@ export default class SignInForm extends Component {
               <Form.Input
                 name="password"
                 onChange={this.handleChange}
+                value={this.state.password}
                 fluid
                 icon="lock"
                 iconPosition="left"

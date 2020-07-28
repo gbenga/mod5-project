@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EditUserForm from "../forms/EditUserForm";
 import { Link } from "react-router-dom";
-import { Dimmer, Header, Icon, Container } from "semantic-ui-react";
+import { Dimmer, Header, Icon } from "semantic-ui-react";
 
 export default class EditUserPage extends Component {
   state = {

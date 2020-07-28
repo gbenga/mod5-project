@@ -4,7 +4,8 @@ export default class StocksForForm extends Component {
   renderStockOptions = () => {
     return this.props.stocks.map((stock) => (
       <option key={stock.id} value={stock.id}>
-        {stock.medicine.name}, {stock.quantity} available at {stock.pharma.name}
+        {stock.medicine.name} (£{stock.price}0) | {stock.quantity} in stock at{" "}
+        {stock.pharma.name}
       </option>
     ));
   };

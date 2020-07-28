@@ -9,9 +9,6 @@ export default class SignUpPage extends Component {
 
   handleOpen = () => this.setState({ active: true });
   handleClose = () => this.setState({ active: false });
-  successfulSignUp = () => {
-    console.log("success");
-  };
 
   render() {
     const { active } = this.state;
@@ -26,10 +23,7 @@ export default class SignUpPage extends Component {
             </Header.Subheader>
           </Header>
         </Dimmer>
-        <SignUpForm
-          successfulSignUp={this.successfulSignUp}
-          handleOpen={this.handleOpen}
-        />
+        <SignUpForm handleOpen={this.handleOpen} />
       </div>
     );
   }
