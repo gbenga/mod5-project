@@ -14,13 +14,15 @@ import NewOrderPage from "./components/pages/NewOrderPage";
 import LoadingPage from "./components/pages/LoadingPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AuthAPI from "./AuthAPI";
-import { Nav, Anchor } from "grommet";
+import { Anchor } from "grommet";
+import { Menu } from "semantic-ui-react";
 
 export default class App extends Component {
   state = {
     user: null,
     redirect: "/",
     isLoading: true,
+    activeItem: "home",
   };
 
   async componentDidMount() {
@@ -43,28 +45,59 @@ export default class App extends Component {
     });
     localStorage.removeItem("token");
   };
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
+    const { activeItem } = this.state;
     if (this.state.isLoading) return <LoadingPage />;
 
     return (
       <div className="App">
         <Router>
-          <Nav direction="row" background="brand" pad="medium">
-            <Anchor label="Home" href={"/"} hoverIndicator />
-            <Anchor label="Profile" href={"/profile"} hoverIndicator />
+          <Menu inverted color="violet">
+            <Menu.Item
+              active={activeItem === "home"}
+              onClick={this.handleItemClick}
+            >
+              <Anchor label="Home" href={"/"} hoverIndicator />
+            </Menu.Item>
+            <Menu.Item
+              active={activeItem === "profile"}
+              onClick={this.handleItemClick}
+            >
+              <Anchor label="Profile" href={"/profile"} hoverIndicator />
+            </Menu.Item>
             {this.state.user ? (
               <>
-                <Anchor label="Medicines" href={"/medicines"} hoverIndicator />
-                <Anchor label="Pharmacies" href={"/pharmas"} hoverIndicator />
-                <Anchor
-                  label="Place a new Order"
-                  href={"/new-order"}
-                  hoverIndicator
-                />
+                <Menu.Item
+                  active={activeItem === "medicines"}
+                  onClick={this.handleItemClick}
+                >
+                  <Anchor
+                    label="Medicines"
+                    href={"/medicines"}
+                    hoverIndicator
+                  />
+                </Menu.Item>
+                <Menu.Item
+                  active={activeItem === "pharmas"}
+                  onClick={this.handleItemClick}
+                >
+                  <Anchor label="Pharmacies" href={"/pharmas"} hoverIndicator />
+                </Menu.Item>
+                <Menu.Item
+                  active={activeItem === "new-order"}
+                  onClick={this.handleItemClick}
+                >
+                  <Anchor
+                    label="Place a New Order"
+                    href={"/new-order"}
+                    hoverIndicator
+                  />
+                </Menu.Item>
               </>
             ) : null}
-          </Nav>
+          </Menu>
           <Switch>
             <Route
               exact
