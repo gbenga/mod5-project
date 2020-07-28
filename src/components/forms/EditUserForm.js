@@ -35,7 +35,8 @@ export default class EditUserForm extends Component {
           address: "",
           allergies: "",
         })
-      );
+      )
+      .then(this.props.handleOpen());
   };
   render() {
     return (

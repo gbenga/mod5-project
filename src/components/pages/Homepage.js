@@ -5,7 +5,7 @@ export default class Homepage extends Component {
   render() {
     return (
       <div>
-        Welcome, this is a home page.
+        <h2>Welcome to OTC</h2>
         {this.props.user ? (
           <>
             <Container>-</Container>

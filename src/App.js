@@ -22,7 +22,6 @@ export default class App extends Component {
     user: null,
     redirect: "/",
     isLoading: true,
-    activeItem: "home",
   };
 
   async componentDidMount() {
@@ -45,50 +44,33 @@ export default class App extends Component {
     });
     localStorage.removeItem("token");
   };
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   render() {
-    const { activeItem } = this.state;
     if (this.state.isLoading) return <LoadingPage />;
 
     return (
       <div className="App">
         <Router>
           <Menu inverted color="violet">
-            <Menu.Item
-              active={activeItem === "home"}
-              onClick={this.handleItemClick}
-            >
+            <Menu.Item>
               <Anchor label="Home" href={"/"} hoverIndicator />
             </Menu.Item>
-            <Menu.Item
-              active={activeItem === "profile"}
-              onClick={this.handleItemClick}
-            >
+            <Menu.Item>
               <Anchor label="Profile" href={"/profile"} hoverIndicator />
             </Menu.Item>
             {this.state.user ? (
               <>
-                <Menu.Item
-                  active={activeItem === "medicines"}
-                  onClick={this.handleItemClick}
-                >
+                <Menu.Item>
                   <Anchor
                     label="Medicines"
                     href={"/medicines"}
                     hoverIndicator
                   />
                 </Menu.Item>
-                <Menu.Item
-                  active={activeItem === "pharmas"}
-                  onClick={this.handleItemClick}
-                >
+                <Menu.Item>
                   <Anchor label="Pharmacies" href={"/pharmas"} hoverIndicator />
                 </Menu.Item>
-                <Menu.Item
-                  active={activeItem === "new-order"}
-                  onClick={this.handleItemClick}
-                >
+                <Menu.Item>
                   <Anchor
                     label="Place a New Order"
                     href={"/new-order"}

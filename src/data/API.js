@@ -6,8 +6,19 @@ const usersURL = `${baseURL}/users`;
 const ordersURL = `${baseURL}/orders`;
 const orderMedicinesURL = `${baseURL}/order_medicines`;
 
+function fetchWithToken(url, options = {}) {
+  return fetch(url, {
+    method: options.method,
+    headers: {
+      ...options.headers,
+      Authorization: localStorage.getItem("token"),
+    },
+    body: options.body,
+  });
+}
+
 function fetchMedicines() {
-  return fetch(medicinesURL)
+  return fetchWithToken(medicinesURL)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -16,14 +27,14 @@ function fetchMedicines() {
     );
 }
 function fetchMedicine(medicineId) {
-  return fetch(`${medicinesURL}/${medicineId}`)
+  return fetchWithToken(`${medicinesURL}/${medicineId}`)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Fetching data for the medicine with ${medicineId} didn't work`)
     );
 }
 function fetchPharmas() {
-  return fetch(pharmasURL)
+  return fetchWithToken(pharmasURL)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -32,21 +43,21 @@ function fetchPharmas() {
     );
 }
 function fetchPharma(pharmaId) {
-  return fetch(`${pharmasURL}/${pharmaId}`)
+  return fetchWithToken(`${pharmasURL}/${pharmaId}`)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Fetching data for the pharma with ${pharmaId} didn't work`)
     );
 }
 function fetchStock(stockId) {
-  return fetch(`${stocksURL}/${stockId}`)
+  return fetchWithToken(`${stocksURL}/${stockId}`)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Fetching data for the stock with ${stockId} didn't work`)
     );
 }
 function fetchUsers() {
-  return fetch(usersURL)
+  return fetchWithToken(usersURL)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -64,7 +75,7 @@ function postToOrders(formData) {
     body: JSON.stringify(formData),
   };
 
-  return fetch(ordersURL, configObject)
+  return fetchWithToken(ordersURL, configObject)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Posting this new order didn't work. Error message : ${err}`)
@@ -80,7 +91,7 @@ function postToOrderMedicines(formData) {
     body: JSON.stringify(formData),
   };
 
-  return fetch(orderMedicinesURL, configObject)
+  return fetchWithToken(orderMedicinesURL, configObject)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -89,7 +100,7 @@ function postToOrderMedicines(formData) {
     );
 }
 function fetchUser(userId) {
-  return fetch(`${usersURL}/${userId}`)
+  return fetchWithToken(`${usersURL}/${userId}`)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -98,7 +109,7 @@ function fetchUser(userId) {
     );
 }
 function fetchOrder(orderId) {
-  return fetch(`${ordersURL}/${orderId}`)
+  return fetchWithToken(`${ordersURL}/${orderId}`)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -116,7 +127,7 @@ function patchToUser(newUserData, id) {
     body: JSON.stringify(newUserData),
   };
 
-  return fetch(`${usersURL}/${id}`, configObject)
+  return fetchWithToken(`${usersURL}/${id}`, configObject)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Editing this user didn't work. Error message : ${err}`)
@@ -133,14 +144,14 @@ function postToUsers(newUserData) {
     body: JSON.stringify(newUserData),
   };
 
-  return fetch(usersURL, configObject)
+  return fetchWithToken(usersURL, configObject)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Creating this new user didn't work. Error message : ${err}`)
     );
 }
 function fetchStocks() {
-  return fetch(stocksURL)
+  return fetchWithToken(stocksURL)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(
@@ -159,7 +170,7 @@ function patchToStock(newStockData, id) {
     body: JSON.stringify(newStockData),
   };
 
-  return fetch(`${stocksURL}/${id}`, configObject)
+  return fetchWithToken(`${stocksURL}/${id}`, configObject)
     .then((resp) => resp.json())
     .catch((err) =>
       alert(`Editing this user didn't work. Error message : ${err}`)
