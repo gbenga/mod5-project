@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import API from "../../data/API";
-import { Button, Form, Grid, Icon, Label } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Grid,
+  Icon,
+  Label,
+  Header,
+  Segment,
+} from "semantic-ui-react";
 
 export default class NewOrderForm extends Component {
   state = {
@@ -42,44 +50,50 @@ export default class NewOrderForm extends Component {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Field>
-              <label>Medicine:</label>
-              <input
-                type="text"
-                value={this.props.medicine.name}
-                readOnly={true}
-              ></input>
-            </Form.Field>
-            <Form.Field>
-              <label>User:</label>
-              <input
-                type="text"
-                value={this.props.user.first_name}
-                readOnly={true}
-              ></input>
-            </Form.Field>
-            <Form.Field>
-              <label>No contact?</label>
-              <input type="checkbox" name="no_contact"></input>
-              <Label pointing="left">
+          <Header as="h2" color="teal" textAlign="center">
+            Place a new Order
+          </Header>
+          <Form size="large" onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <Form.Field>
+                <label>Medicine</label>
+                <Form.Input
+                  type="text"
+                  value={this.props.medicine.name}
+                  readOnly={true}
+                  readOnly
+                ></Form.Input>
+              </Form.Field>
+              <Form.Field>
+                <label>User</label>
+                <Form.Input
+                  type="text"
+                  value={this.props.user.first_name}
+                  readOnly={true}
+                ></Form.Input>
+              </Form.Field>
+              <Form.Field>
+                <label>No contact?</label>
+                <input type="checkbox" name="no_contact"></input>
+              </Form.Field>
+              <Label>
                 Please select if you would prefer a no contact delivery
               </Label>
-            </Form.Field>
-            <Form.Field>
-              <label>Delivery Date</label>
-              <input
-                name="delivery_date"
-                type="date"
-                onChange={this.handleChange}
-              ></input>
-            </Form.Field>
-            <Button type="submit" animated>
-              <Button.Content visible>Submit</Button.Content>
-              <Button.Content hidden>
-                <Icon name="check square outline" />
-              </Button.Content>
-            </Button>
+              <Form.Field>
+                <label>Delivery Date</label>
+                <Form.Input
+                  name="delivery_date"
+                  type="date"
+                  onChange={this.handleChange}
+                ></Form.Input>
+              </Form.Field>
+              <Button type="submit" animated>
+                <Button.Content visible>Submit</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="check square outline" />
+                </Button.Content>
+              </Button>
+            </Segment>
           </Form>
         </Grid.Column>
       </Grid>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NewOrderForm from "../forms/NewOrderForm";
 import API from "../../data/API";
-import { Dimmer, Header, Icon } from "semantic-ui-react";
+import { Dimmer, Header, Icon, Container } from "semantic-ui-react";
 
 export default class NewOrderPage extends Component {
   state = {
@@ -49,6 +49,7 @@ export default class NewOrderPage extends Component {
             {this.readOrderDetails()}
           </Header>
         </Dimmer>
+        <Container>-</Container>
         <NewOrderForm
           user={this.props.user}
           stocks={this.state.stocks}

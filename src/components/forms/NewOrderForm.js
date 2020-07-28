@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import StocksForForm from "./StocksForForm";
 import API from "../../data/API";
-import { Label } from "semantic-ui-react";
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+  Label,
+} from "semantic-ui-react";
 
 export default class NewOrderForm extends Component {
   state = {
@@ -72,40 +80,56 @@ export default class NewOrderForm extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>User:</label>
-        <input
-          type="text"
-          value={this.props.user.first_name}
-          readOnly={true}
-        ></input>
-        <br />
-        <label>Delivery date:</label>
-        <input
-          type="date"
-          name="delivery_date"
-          onChange={this.handleChange}
-        ></input>
-        <br />
-        <label>No contact?</label>
-        <input
-          type="checkbox"
-          name="no_contact"
-          onChange={this.handleChange}
-        ></input>
-        <Label pointing="left">
-          Please select if you would prefer a no contact delivery
-        </Label>
-        <br />
-        <h2>Medicines</h2>
-        <StocksForForm
-          stocksToBeOrdered={this.state.stocksToBeOrdered}
-          stocks={this.props.stocks}
-          updateStateNewOrderForm={this.updateStateNewOrderForm}
-        />
-        <button onClick={this.handleAddStockToBeOrdered}>+</button>
-        <button type="submit">Submit Order</button>
-      </form>
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as="h2" color="teal" textAlign="center">
+            Place a new Order
+          </Header>
+          <Form size="large" onSubmit={this.handleSubmit}>
+            <Segment stacked>
+              <label>User:</label>
+              <Form.Input
+                type="text"
+                value={this.props.user.first_name}
+                readOnly={true}
+                fluid
+                readOnly
+              />
+              <label>Delivery date:</label>
+              <Form.Input
+                type="date"
+                name="delivery_date"
+                onChange={this.handleChange}
+                fluid
+              />
+              <label>No contact?</label>
+              <Form.Input
+                type="checkbox"
+                name="no_contact"
+                onChange={this.handleChange}
+                fluid
+              />
+              <Label>
+                Please select if you would prefer a no contact delivery
+              </Label>
+              <h2>Medicines</h2>
+              <StocksForForm
+                stocksToBeOrdered={this.state.stocksToBeOrdered}
+                stocks={this.props.stocks}
+                updateStateNewOrderForm={this.updateStateNewOrderForm}
+              />
+              <Button onClick={this.handleAddStockToBeOrdered}>+</Button>
+              <Button type="submit" color="teal">
+                Submit Order
+              </Button>
+            </Segment>
+          </Form>
+        </Grid.Column>
+      </Grid>
     );
   }
 }

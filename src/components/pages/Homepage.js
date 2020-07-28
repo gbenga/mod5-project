@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Container } from "semantic-ui-react";
 
 export default class Homepage extends Component {
   render() {
@@ -6,7 +7,12 @@ export default class Homepage extends Component {
       <div>
         Welcome, this is a home page.
         {this.props.user ? (
-          <>Hi {this.props.user.first_name}</>
+          <>
+            <Container>-</Container>
+            <Container>
+              <h2>Hi {this.props.user.first_name}</h2>
+            </Container>
+          </>
         ) : (
           <div>Random fact</div>
         )}

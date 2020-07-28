@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../data/API";
 import OrderCard from "../cards/OrderCard";
-import { Grid } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
 
 export default class UsersOrdersContainer extends Component {
   state = {
@@ -31,7 +31,9 @@ export default class UsersOrdersContainer extends Component {
   render() {
     return (
       <div>
-        Here are your current orders:
+        <Header as="h3" icon textAlign="center">
+          Orders
+        </Header>
         <Grid divided>
           <Grid.Row columns={4}>{this.renderOrderCards()}</Grid.Row>
         </Grid>

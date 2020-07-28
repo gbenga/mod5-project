@@ -23,23 +23,27 @@ export default class ProfilePage extends Component {
     return (
       <div>
         <Header as="h3" icon textAlign="center">
+          {this.props.user.first_name} {this.props.user.last_name}
+        </Header>
+        <Header as="h4" icon textAlign="center">
+          <Header.Content>Address: {this.props.user.address}</Header.Content>
+          <Header.Content>Phone: {this.props.user.phone}</Header.Content>
+          <Header.Content>Date of Birth: {this.props.user.dob}</Header.Content>
           <Header.Content>
-            {this.props.user.first_name} {this.props.user.last_name}
+            Allergies: {this.props.user.allergies}
           </Header.Content>
-          <Header.Content>{this.props.user.address}</Header.Content>
-          <Header.Content>{this.props.user.phone}</Header.Content>
-          <Header.Content>{this.props.user.dob}</Header.Content>
-          <Header.Content>{this.props.user.allergies}</Header.Content>
-          <Header.Content>{this.props.user.sex}</Header.Content>
+          <Header.Content>Sex: {this.props.user.sex}</Header.Content>
         </Header>
         <Button.Group>
           <Button
+            small
             labelPosition="left"
             icon="edit outline"
             content="Edit User"
             onClick={this.handleClickEdit}
           />
           <Button
+            small
             labelPosition="right"
             icon="dont"
             content="Sign Out"

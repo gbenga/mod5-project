@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SignInForm from "../forms/SignInForm";
-import { Anchor } from "grommet";
+import { Container } from "semantic-ui-react";
 
 export default class SignInPage extends Component {
   render() {
@@ -8,8 +8,11 @@ export default class SignInPage extends Component {
       <div>
         {this.props.user ? (
           <>
-            You are signed in, {this.props.user.first_name}
-            <Anchor label="Back to Home" href={"/"} hoverIndicator />
+            <Container>-</Container>
+            <Container>
+              <h2>You are signed in, {this.props.user.first_name}</h2>
+              <a href={"/"}>Back to Home</a>
+            </Container>
           </>
         ) : (
           <SignInForm signIn={this.props.signIn} />

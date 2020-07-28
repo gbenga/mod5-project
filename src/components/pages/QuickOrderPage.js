@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import QuickOrderForm from "../forms/QuickOrderForm";
 import API from "../../data/API";
-import { Dimmer, Header, Icon } from "semantic-ui-react";
+import { Dimmer, Header, Icon, Container } from "semantic-ui-react";
 
 export default class OrderPage extends Component {
   state = {
@@ -58,6 +58,8 @@ export default class OrderPage extends Component {
             {this.readOrderDetails()}
           </Header>
         </Dimmer>
+        <Container>-</Container>
+
         <QuickOrderForm
           user={this.props.user}
           medicine={this.state}

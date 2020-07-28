@@ -87,7 +87,7 @@ export default class SignUpForm extends Component {
                 name="allergies"
                 onChange={this.handleChange}
                 fluid
-                icon="ban"
+                icon="thumbs down"
                 iconPosition="left"
                 placeholder="Enter your Allergies"
               />
@@ -98,6 +98,7 @@ export default class SignUpForm extends Component {
               </Form.Input>
               <Form.Input
                 name="dob"
+                type="date"
                 onChange={this.handleChange}
                 fluid
                 icon="calendar alternate"

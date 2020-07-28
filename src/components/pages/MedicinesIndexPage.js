@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MedicinesSearchResultsContainer from "../containers/MedicinesSearchResultsContainer";
 import API from "../../data/API";
-import { Form } from "semantic-ui-react";
+import { Form, Container } from "semantic-ui-react";
 
 export default class MedicinesIndexPage extends Component {
   state = {
@@ -39,6 +39,7 @@ export default class MedicinesIndexPage extends Component {
             ></input>
           </Form.Field>
         </Form>
+        <Container>-</Container>
         <MedicinesSearchResultsContainer
           filteredMedicines={this.filterMedicines()}
         />
