@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3000/api/v1";
+const baseURL = "https://gbenga-otc.herokuapp.com/";
 const sign_inURL = `${baseURL}/sign-in`;
 const validateURL = `${baseURL}/validate`;
 
