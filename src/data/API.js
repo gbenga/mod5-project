@@ -1,4 +1,5 @@
-const baseURL = "https://gbenga-otc.herokuapp.com/api/v1";
+// const baseURL = "http://localhost:3000/api/v1";
+const baseURL = "https://get-it-otc.herokuapp.com/api/v1";
 const medicinesURL = `${baseURL}/medicines`;
 const pharmasURL = `${baseURL}/pharmas`;
 const stocksURL = `${baseURL}/stocks`;
