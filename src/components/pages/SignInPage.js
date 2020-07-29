@@ -10,7 +10,7 @@ export default class SignInPage extends Component {
           <>
             <Container>-</Container>
             <Container>
-              <h2>You are signed in, {this.props.user.first_name}</h2>
+              <h2>Welcome back, {this.props.user.first_name}</h2>
               <a href={"/"}>Back to Home</a>
             </Container>
           </>

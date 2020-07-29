@@ -36,7 +36,6 @@ export default class SignUpForm extends Component {
             resp.errors.map((err) => alert(JSON.stringify(err)))
           : this.props.handleOpen()
       )
-      .then((order) => alert(JSON.stringify(order)))
       .then(
         this.setState({
           first_name: "",
