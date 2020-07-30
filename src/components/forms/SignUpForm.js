@@ -153,6 +153,12 @@ export default class SignUpForm extends Component {
                 type="password"
               />
 
+              <Message>
+                By submitting this form you are giving consent to{" "}
+                <strong>Get it OTC</strong>to hold your data. We are committed
+                to handling personal data responsibly and in accordance with
+                applicable law.
+              </Message>
               <Button type="submit" color="teal" fluid size="large">
                 Submit details
               </Button>
