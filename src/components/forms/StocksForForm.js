@@ -13,7 +13,7 @@ export default class StocksForForm extends Component {
   handleStockToBeOrderedChange = (stockId, index) => {
     // Use stock id from value of select to filter through the stocks, return the whole stock object
     // Now there is access to the medicine and stock ids
-    const stockInQuestion = this.props.stocks.find((s) => s.id == stockId);
+    const stockInQuestion = this.props.stocks.find((s) => s.id === stockId);
     // On change, this will map through the stockToBeOrdered and compare the id of
     // the stock has just been selected, the stocks in stocksToBeOrdered
     // If there is a match, update the specific stockToBeOrdered with what has just been selected
