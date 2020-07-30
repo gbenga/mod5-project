@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Container } from "semantic-ui-react";
+import { Container, Icon, Header } from "semantic-ui-react";
 import Logo from "../info/Logo";
 import About from "../info/About";
 import Tada from "react-reveal/Tada";
+import Flash from "react-reveal/Flash";
 
 export default class Homepage extends Component {
   constructor(props) {
@@ -16,12 +17,18 @@ export default class Homepage extends Component {
   render() {
     return (
       <div>
-        <Tada spy={this.state.counter}>
-          <h1 onClick={this.handleClick}>Get it OTC</h1>
-        </Tada>
+        <div>
+          <Tada spy={this.state.counter}>
+            <Header as="h1" onClick={this.handleClick}>
+              Get it OTC
+            </Header>
+          </Tada>
+          <Flash>
+            <Icon name="angle double up" />
+          </Flash>
+        </div>
         {this.props.user ? (
           <>
-            <Container>-</Container>
             <Container>
               <h2>
                 What will you get OTC today, {this.props.user.first_name}?
@@ -31,6 +38,10 @@ export default class Homepage extends Component {
         ) : null}
         <Container>
           <Logo />
+          <Flash>
+            <Icon name="angle double down" />
+          </Flash>
+          <Container>-</Container>
           <About />
         </Container>
       </div>
