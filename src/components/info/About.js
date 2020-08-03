@@ -10,6 +10,15 @@ export default function AboutComponent() {
           medication straight to your door.
         </strong>
       </Pulse>
+      <div>
+        {" "}
+        Made by
+        <strong>
+          <a href={"https://github.com/gbenga"}>Gbenga</a>
+        </strong>
+      </div>
+      <a href={"https://github.com/gbenga/get-it-otc-frontend"}>Frontend</a>
+      <a href={"https://github.com/gbenga/get-it-otc-backend"}>Backend</a>
     </div>
   );
 }
