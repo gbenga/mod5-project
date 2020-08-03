@@ -1,5 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+Welcome to Get it OTC.
+The purpose of this app is to make it easier for everyone to have access to over-the-counter medication, without leaving home.
 ## Available Scripts
 
 In the project directory, you can run:
