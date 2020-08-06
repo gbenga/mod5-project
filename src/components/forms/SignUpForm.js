@@ -154,6 +154,11 @@ export default class SignUpForm extends Component {
               />
 
               <Message>
+                {" "}
+                Guest Sign In Details
+                <strong>Username: guest1, Password: guest1</strong>
+              </Message>
+              <Message>
                 By submitting this form you are giving consent to{" "}
                 <strong>Get it OTC</strong>to hold your data. We are committed
                 to handling personal data responsibly and in accordance with
