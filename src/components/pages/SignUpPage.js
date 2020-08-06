@@ -28,11 +28,6 @@ export default class SignUpPage extends Component {
           guest details, at the bottom of the page.
         </div>
         <SignUpForm handleOpen={this.handleOpen} />
-        <div>
-          {" "}
-          Guest Sign In Details
-          <strong>Username: guest1, Password: guest1</strong>
-        </div>
       </div>
     );
   }
