@@ -24,13 +24,15 @@ export default class SignUpPage extends Component {
           </Header>
         </Dimmer>
         <div>
-          If you don't want to make an account, you can sign in with the guest
-          account
-        </div>
-        <div>
-          <strong>Username: guest1, Password: guest1</strong>
+          If you would prefer not to make an account, you can sign in with the
+          guest details, at the bottom of the page.
         </div>
         <SignUpForm handleOpen={this.handleOpen} />
+        <div>
+          {" "}
+          Guest Sign In Details
+          <strong>Username: guest1, Password: guest1</strong>
+        </div>
       </div>
     );
   }
