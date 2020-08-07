@@ -23,6 +23,7 @@ export default class Homepage extends Component {
               Get it OTC
             </Header>
           </Tada>
+          <div>(click me)</div>
           <Flash>
             <Icon name="angle double up" />
           </Flash>
