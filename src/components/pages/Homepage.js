@@ -23,7 +23,7 @@ export default class Homepage extends Component {
               Get it OTC
             </Header>
           </Tada>
-          <div>(click me)</div>
+          {/* <div>(click me)</div> */}
           <Flash>
             <Icon name="angle double up" />
           </Flash>
@@ -32,7 +32,7 @@ export default class Homepage extends Component {
           <>
             <Container>
               <h2>
-                What will you get OTC today, {this.props.user.first_name}?
+                What will you purchasse today, {this.props.user.first_name}?
               </h2>
             </Container>
           </>
