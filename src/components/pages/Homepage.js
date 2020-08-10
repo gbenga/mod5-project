@@ -32,7 +32,7 @@ export default class Homepage extends Component {
           <>
             <Container>
               <h2>
-                What will you purchasse today, {this.props.user.first_name}?
+                What will you purchase today, {this.props.user.first_name}?
               </h2>
             </Container>
           </>
