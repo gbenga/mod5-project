@@ -15,11 +15,9 @@ Get It OTC is a platform providing immuno-compromised individuals with access to
 
 ## **Screenshots**
 
-<---
 ![Pharmacies](/gif/pharmacies.gif)
 ![Medicines](/gif/medicines.gif)
 ![Order](/gif/order.gif)
---->
 
 ## **Demo**
 
