@@ -19,8 +19,7 @@ export default function AboutComponent() {
           <a href={"https://github.com/gbenga"}>Gbenga</a>
         </strong>
       </div>
-      <a href={"https://github.com/gbenga/get-it-otc-frontend"}>Frontend</a>
-      <a href={"https://github.com/gbenga/get-it-otc-backend"}>Backend</a>
+      <a href={"https://github.com/gbenga/get-it-otc-frontend"}>GitHub</a>
     </div>
   );
 }

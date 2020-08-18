@@ -33,15 +33,12 @@ export default class App extends Component {
   }
 
   signIn = (user, token) => {
-    this.setState({
-      user,
-    });
+    this.setState({ user });
     localStorage.token = token;
   };
+
   signOut = () => {
-    this.setState({
-      user: null,
-    });
+    this.setState({ user: null });
     localStorage.removeItem("token");
   };
 
