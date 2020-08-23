@@ -6,10 +6,10 @@ export default function AboutComponent() {
     <div>
       <Pulse>
         <strong>
-          This app was built in order make it easier to get over-the-counter
-          medication straight to your door. Especially given that some people
-          may be sheltering, and unable to visit the pharmacy themselves, I
-          wished something like this existed.
+          This app was built in order make it easier for immuno-compromised
+          individuals to get over-the-counter medication straight to their door.
+          Especially given that some people may be sheltering, and unable to
+          visit the pharmacy themselves, I wished something like this existed.
         </strong>
       </Pulse>
       <div>
