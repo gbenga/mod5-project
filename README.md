@@ -23,8 +23,6 @@ Get It OTC is a platform providing immuno-compromised individuals with access to
 
 A full video demo is available [here](https://www.loom.com/share/bac54eb0d2aa4f81868e94507ca42d1c)
 
-Get It OTC is also live, try it for yourself: [here](https://get-it-otc.netlify.app/)
-
 ## Technologies
 
 This project was created with:
